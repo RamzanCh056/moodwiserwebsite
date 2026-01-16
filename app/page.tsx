@@ -412,6 +412,77 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How MoodWiser Supports You Section */}
+      <section className="py-32 px-6 bg-gradient-to-br from-teal-900 via-emerald-900 to-teal-800 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-teal-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        </div>
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <div className="text-center mb-16 fade-in-on-scroll">
+            <h2 className="text-5xl md:text-6xl font-bold mb-4 text-white">
+              How MoodWiser Supports You
+            </h2>
+            <p className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              ⭐ Every Day
+            </p>
+            <p className="text-xl md:text-2xl text-white/90 font-light">
+              One app. Gentle guidance. Real calm.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: 'Daily App Guidance',
+                subtitle: 'Small habits that calm your mind',
+                description: 'Simple, science-backed tools inside the MoodWiser app help you reduce stress, understand your emotions, and build emotional balance—without pressure.',
+                cta: '→ Download the MoodWiser App',
+                ctaLink: '#home'
+              },
+              {
+                title: 'Morning Reset Rituals (App-Led)',
+                subtitle: 'Start your day grounded',
+                description: 'Begin each morning with gentle, app-guided routines that help you feel clear, focused, and emotionally steady before the day begins.'
+              },
+              {
+                title: 'Nighttime Wind-Down (App-Led)',
+                subtitle: 'Rest your mind, not just your body',
+                description: 'Calm racing thoughts and create a soothing nighttime routine that supports deeper rest and emotional reset.'
+              },
+              {
+                title: 'Calm Home Support',
+                subtitle: 'Extend your calm beyond the app',
+                description: 'Thoughtfully curated essentials that help your space feel warm, safe, and supportive—no overwhelm, only what truly helps.',
+                cta: '→ Explore Calm Picks',
+                ctaLink: '#products'
+              }
+            ].map((support, index) => (
+              <div
+                key={index}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-500 fade-in-on-scroll"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <h3 className="text-xl font-bold text-emerald-300 mb-2">{support.title}</h3>
+                <p className="text-white/80 italic mb-4 text-sm">{support.subtitle}</p>
+                <p className="text-white/90 leading-relaxed mb-6 text-base">{support.description}</p>
+                {support.cta && (
+                  <a
+                    href={support.ctaLink}
+                    className="text-white hover:text-emerald-300 transition-colors duration-300 font-medium text-sm inline-flex items-center gap-2 group"
+                  >
+                    {support.cta}
+                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Experience MoodWiser Section */}
       <section className="py-32 px-6 bg-gradient-to-b from-white via-sky-50/20 to-white relative overflow-hidden">
         <div className="container mx-auto max-w-7xl">
@@ -848,8 +919,14 @@ export default function Home() {
             <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-400 to-purple-400 bg-clip-text text-transparent">
               Get in Touch
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600">
+            <p className="text-xl md:text-2xl text-gray-600 mb-4">
               We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+            </p>
+            <p className="text-lg text-gray-700">
+              Or email us directly at:{' '}
+              <a href="mailto:app@moodwiser.com" className="text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
+                app@moodwiser.com
+              </a>
             </p>
           </div>
 
@@ -1095,22 +1172,36 @@ export default function Home() {
             {/* Legal & Social */}
             <div>
               <h3 className="text-white font-bold mb-6 text-xl">Connect</h3>
-              <div className="flex space-x-4 mb-8">
-                <a href="#" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-sky-500 hover:to-cyan-500 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="Facebook">
-                  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-                <a href="#" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-emerald-500 hover:to-teal-500 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="Instagram">
+              <div className="flex flex-wrap gap-4 mb-6">
+                <a href="https://www.instagram.com/moodwiserapp" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="Instagram - MoodWiser App">
                   <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </a>
-                <a href="#" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="Twitter">
+                <a href="https://www.instagram.com/wealthxspire" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-pink-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="Instagram - WealthXSpire">
                   <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </a>
+                <a href="https://www.tiktok.com/@moodwiser" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-cyan-500 hover:to-pink-500 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="TikTok">
+                  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/justine-sinclair-a8387315b/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-500 hover:to-blue-600 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="LinkedIn">
+                  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </a>
+                <a href="https://www.facebook.com/moodwiser/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-gray-800/50 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-xl" aria-label="Facebook">
+                  <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+              </div>
+              <div className="mb-4">
+                <p className="text-gray-400 text-sm mb-2">Email us:</p>
+                <a href="mailto:app@moodwiser.com" className="text-sky-400 hover:text-sky-300 transition-colors duration-200 text-base font-medium">app@moodwiser.com</a>
               </div>
               <div className="flex flex-col space-y-3">
                 <a href="#" className="text-gray-300 hover:text-sky-400 transition-all duration-300 text-base font-medium hover:translate-x-2 transform inline-block">Privacy Policy</a>
