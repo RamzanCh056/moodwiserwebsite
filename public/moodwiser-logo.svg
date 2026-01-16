@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark teal background -->
+  <rect width="512" height="512" rx="64" fill="#0d9488"/>
+  <!-- Lime green sad face -->
+  <g fill="#84cc16">
+    <!-- Left eye -->
+    <circle cx="180" cy="200" r="30"/>
+    <!-- Right eye -->
+    <circle cx="332" cy="200" r="30"/>
+    <!-- Downturned mouth (inverted U) -->
+    <path d="M256 320 Q 180 280, 180 320 Q 180 360, 256 360 Q 332 360, 332 320 Q 332 280, 256 320" stroke="#84cc16" stroke-width="40" stroke-linecap="round" fill="none"/>
+  </g>
+</svg>

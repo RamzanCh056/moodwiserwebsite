@@ -208,8 +208,15 @@ export default function Home() {
         <nav className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 via-emerald-400 to-purple-400 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
-                <span className="text-white text-xl font-bold">M</span>
+              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 relative">
+                <Image
+                  src="/moodwiser.jpeg"
+                  alt="Moodwiser Logo"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                  priority
+                />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
                 Moodwiser
@@ -1142,8 +1149,14 @@ export default function Home() {
             {/* Company Bio */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 via-emerald-400 to-purple-400 flex items-center justify-center shadow-xl hover:scale-110 transition-transform duration-300">
-                  <span className="text-white text-2xl font-bold">M</span>
+                <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-xl hover:scale-110 transition-transform duration-300 relative">
+                  <Image
+                    src="/moodwiser.jpeg"
+                    alt="Moodwiser Logo"
+                    width={56}
+                    height={56}
+                    className="object-cover w-full h-full"
+                  />
                 </div>
                 <div className="text-3xl font-bold bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
                   Moodwiser

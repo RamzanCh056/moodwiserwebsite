@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Moodwiser - Find Your Inner Peace",
   description: "Discover tranquility with Moodwiser - your companion for mindfulness and emotional wellness. Download our app and explore our serene collection of products.",
+  icons: {
+    icon: '/moodwiser.jpeg',
+    apple: '/moodwiser.jpeg',
+    shortcut: '/moodwiser.jpeg',
+  },
 };
 
 export default function RootLayout({
