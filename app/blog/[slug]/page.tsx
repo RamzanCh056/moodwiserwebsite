@@ -308,7 +308,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   href="https://apps.apple.com/pk/app/moodwiser/id6755422630"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold border-2 border-gray-200"
+                  className="flex items-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold border-2 border-gray-200 cursor-pointer"
                 >
                   <svg className="w-7 h-7" viewBox="0 0 24 24" fill="#000000">
                     <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
@@ -319,7 +319,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                   href="https://play.google.com/store/apps/details?id=com.moodwiser.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold border-2 border-gray-200"
+                  className="flex items-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold border-2 border-gray-200 cursor-pointer"
                 >
                   <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
                     <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#4285F4"/>
