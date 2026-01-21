@@ -268,6 +268,12 @@ export default function Home() {
                 Products
                 {activeSection === 'products' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-400 to-teal-400"></span>}
               </button>
+              <Link
+                href="/program"
+                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500"
+              >
+                Program
+              </Link>
               <button
                 onClick={() => scrollToSection('blogs')}
                 className={`${getNavButtonClass('blogs')} cursor-pointer`}
@@ -299,76 +305,90 @@ export default function Home() {
 
       {/* Hero Section with Beautiful Background Image */}
       {/* Hero Section with Split Layout & Dashboard Mockup */}
-      <section id="home" className="pt-32 pb-20 px-6 relative overflow-hidden min-h-screen flex items-center bg-gradient-to-br from-white via-blue-50 to-purple-50">
+      <section id="home" className="pt-32 pb-24 px-6 relative overflow-hidden min-h-screen flex items-center bg-white">
 
-        {/* Animated Background Elements */}
+        {/* Premium Background Gradients */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-purple-200/30 to-blue-200/30 rounded-full blur-3xl animate-blob"></div>
-          <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-teal-200/30 to-sky-200/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] bg-gradient-to-br from-indigo-100/40 via-purple-100/40 to-sky-100/40 rounded-full blur-[100px] animate-blob"></div>
+          <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-sky-100/40 via-teal-100/40 to-emerald-100/40 rounded-full blur-[100px] animate-blob animation-delay-2000"></div>
+          <div className="absolute top-[40%] left-[20%] w-[400px] h-[400px] bg-pink-100/30 rounded-full blur-[80px] animate-blob animation-delay-4000"></div>
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             {/* Left Content */}
-            <div className="text-center lg:text-left space-y-8 fade-in">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm border border-gray-100">
-                <span className="flex h-2 w-2 relative">
+            <div className="text-center lg:text-left space-y-10 fade-in">
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-white/60 backdrop-blur-md rounded-full shadow-sm border border-white/50 hover:shadow-md transition-shadow duration-300">
+                <span className="flex h-2.5 w-2.5 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-500"></span>
                 </span>
-                <span className="text-xs font-semibold bg-gradient-to-r from-sky-600 to-slate-600 bg-clip-text text-transparent uppercase tracking-wider">
+                <span className="text-sm font-semibold text-slate-600 tracking-wide uppercase">
                   Where emotions meet Wisdom
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
-                <span className="block text-[#2D3748]">
+              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
+                <span className="block">
                   Stop Fighting
                 </span>
-                <span className="block bg-gradient-to-r from-sky-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
+                <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent pb-2">
                   Your Anxiety.
                 </span>
-                <span className="block text-[#2D3748] mt-2">
+                <span className="block text-slate-800 mt-1">
                   Start Understanding It.
                 </span>
               </h1>
 
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
+              <p className="text-xl text-slate-600 leading-relaxed max-w-lg mx-auto lg:mx-0 font-medium">
                 Discover the power of emotional awareness. Build resilience, find balance, and create lasting peace in your daily life.
               </p>
 
               {/* App Store Buttons */}
-              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 fade-in-delay lg:ml-0">
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 fade-in-delay lg:ml-0 pt-2">
+                <Link
+                  href="/program"
+                  className="group relative flex items-center gap-3.5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-7 py-4.5 rounded-2xl hover:from-slate-800 hover:via-slate-700 hover:to-slate-800 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-slate-900/30 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[240px] h-[76px] justify-center cursor-pointer overflow-hidden border border-slate-700/50"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-500"></div>
+                  <span className="text-2xl relative z-10 group-hover:scale-110 transition-transform duration-300">🎓</span>
+                  <div className="text-left relative z-10">
+                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-300/90 leading-tight mb-0.5">Start Journey</div>
+                    <div className="text-[15px] font-bold leading-tight text-white">21-Day Program</div>
+                  </div>
+                </Link>
                 <a
                   href="https://apps.apple.com/pk/app/moodwiser/id6755422630"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-[#1A202C] text-white px-6 py-3 rounded-full hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl w-full sm:w-auto min-w-[180px] justify-center cursor-pointer"
+                  className="group relative flex items-center gap-3.5 bg-white text-slate-900 border-2 border-slate-200/80 px-7 py-4.5 rounded-2xl hover:border-slate-300 hover:bg-slate-50/80 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[240px] h-[76px] justify-center cursor-pointer overflow-hidden"
                 >
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#ffffff">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <svg className="w-7 h-7 text-black relative z-10 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
                   </svg>
-                  <div className="text-left">
-                    <div className="text-[10px] uppercase tracking-wider opacity-80">Download on</div>
-                    <div className="text-sm font-bold leading-none">App Store</div>
+                  <div className="text-left relative z-10">
+                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-500 leading-tight mb-0.5">Download on</div>
+                    <div className="text-[15px] font-bold leading-tight text-slate-900">App Store</div>
                   </div>
                 </a>
                 <a
                   href="https://play.google.com/store/apps/details?id=com.moodwiser.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white text-gray-900 border border-gray-200 px-6 py-3 rounded-full hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto min-w-[180px] justify-center cursor-pointer"
+                  className="group relative flex items-center gap-3.5 bg-white text-slate-900 border-2 border-slate-200/80 px-7 py-4.5 rounded-2xl hover:border-slate-300 hover:bg-slate-50/80 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[240px] h-[76px] justify-center cursor-pointer overflow-hidden"
                 >
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <svg className="w-7 h-7 relative z-10 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none">
                     <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#4285F4" />
                     <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#34A853" />
                     <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.5 12.92 20.16 13.19L17.19 15.22L14.54 12.85L17.19 10.47L20.16 10.81Z" fill="#FBBC04" />
                     <path d="M16.81 8.88L14.54 11.15L6.05 2.66L16.81 8.88Z" fill="#EA4335" />
                   </svg>
-                  <div className="text-left">
-                    <div className="text-[10px] uppercase tracking-wider opacity-60">Get it on</div>
-                    <div className="text-sm font-bold leading-none">Google Play</div>
+                  <div className="text-left relative z-10">
+                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-500 leading-tight mb-0.5">Get it on</div>
+                    <div className="text-[15px] font-bold leading-tight text-slate-900">Google Play</div>
                   </div>
                 </a>
               </div>
@@ -376,13 +396,13 @@ export default function Home() {
 
             {/* Right - Hero Image (Dashboard Mockup) */}
             <div className="relative flex justify-center lg:justify-end slide-up">
-              <div className="relative w-full max-w-[400px]">
+              <div className="relative w-full max-w-[420px]">
                 {/* Glow Effect */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-sky-200/40 via-purple-200/40 to-pink-200/40 rounded-full blur-[60px] animate-pulse"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-sky-200/50 via-purple-200/50 to-pink-200/50 rounded-full blur-[80px] animate-pulse"></div>
 
                 {/* Phone Frame */}
-                <div className="relative bg-white rounded-[3rem] p-3 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] transform rotate-[-2deg] hover:rotate-0 transition-transform duration-700 border-[8px] border-white">
-                  <div className="relative rounded-[2.5rem] overflow-hidden bg-gray-50 aspect-[9/19] shadow-inner">
+                <div className="relative bg-white rounded-[3.5rem] p-3 shadow-2xl transform rotate-[-3deg] hover:rotate-0 transition-transform duration-700 border-[8px] border-white ring-1 ring-gray-100/50">
+                  <div className="relative rounded-[3rem] overflow-hidden bg-gray-50 aspect-[9/19] shadow-inner">
                     <Image
                       src="/app-dashboard-hd.png"
                       alt="MoodWiser Dashboard"
@@ -391,23 +411,26 @@ export default function Home() {
                       priority
                     />
                     {/* CSS Patch: Fix "MoodFit" to "MoodWiser" */}
-                    <div className="absolute top-[7.8%] left-[7.5%] bg-white px-2 py-1 z-10">
-                      <span className="text-[#3B82F6] font-[600] text-[1.2rem] tracking-tight">MoodWiser</span>
+                    <div className="absolute top-[7.8%] left-[7.5%] bg-white px-2 py-1 z-10 rounded-md shadow-sm">
+                      <span className="text-[#3B82F6] font-bold text-xl tracking-tight">MoodWiser</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Floating Elements (Decorations) */}
-                <div className="absolute -top-10 -right-10 bg-white p-4 rounded-2xl shadow-xl animate-float animation-delay-2000">
-                  <span className="text-3xl">🌿</span>
+                <div className="absolute top-10 -right-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] animate-float border border-white/50">
+                  <span className="text-4xl">🌿</span>
                 </div>
-                <div className="absolute top-1/2 -left-12 bg-white p-3 rounded-2xl shadow-xl animate-float">
-                  <span className="text-3xl">✨</span>
+                <div className="absolute top-1/2 -left-16 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] animate-float border border-white/50">
+                  <span className="text-4xl">✨</span>
                 </div>
-                <div className="absolute -bottom-8 right-12 bg-white p-3 rounded-2xl shadow-xl animate-float animation-delay-4000">
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl">💚</span>
-                    <span className="text-sm font-bold text-gray-800">95% Feel Better</span>
+                <div className="absolute -bottom-4 right-8 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] animate-float animation-delay-4000 border border-white/50">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl">💚</span>
+                    <div>
+                      <div className="text-base font-bold text-slate-800">95% Feel Better</div>
+                      <div className="text-xs text-slate-500">In just 21 days</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -416,189 +439,179 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience MoodWiser Section - Earthy Sage Theme */}
-      <section className="py-24 px-6 bg-[#4A5E53] relative overflow-hidden text-white">
-        {/* Decorative Background Elements - Subtle Earth Tones */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-          <div className="absolute -top-20 -right-20 w-96 h-96 bg-[#6B8572] rounded-full blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-[#2F3E35] rounded-full blur-3xl opacity-20 animate-pulse animation-delay-2000"></div>
-        </div>
+      {/* Experience MoodWiser Section - Dark Premium Theme */}
+      <section className="py-32 px-6 bg-slate-900 relative overflow-hidden text-white">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="text-center mb-20 fade-in-on-scroll">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-8 tracking-tight">
+          <div className="text-center mb-24 fade-in-on-scroll">
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-sky-200 to-teal-200">
               Experience MoodWiser
             </h2>
 
             {/* Emotional Story / Manifesto */}
-            <div className="max-w-3xl mx-auto space-y-6 font-light leading-relaxed text-blue-50/90 text-lg md:text-xl">
+            <div className="max-w-3xl mx-auto space-y-8 font-light leading-relaxed text-slate-300 text-lg md:text-2xl">
               <p>
                 We live in a world that never seems to slow down.
                 Every scroll. Every notification. Every moment is pulling at your attention.
               </p>
-              <p className="font-normal text-white">
+              <p className="font-medium text-white border-l-4 border-indigo-500 pl-6 my-8">
                 MoodWiser was created for those moments when you pause —
                 to breathe, notice, and understand what you're actually feeling.
               </p>
               <p>
-                MoodWiser is an emotional wellness app that helps you track your emotions,
-                understand stress patterns, and return to calm—on your own terms.
-              </p>
-              <p className="italic text-teal-100">
-                No pressure. No judgment.
-                Just clarity, awareness, and gentle guidance whenever you need it.
+                Return to calm—on your own terms.
+                <span className="block mt-4 text-sky-200 italic font-normal">
+                  No pressure. No judgment. Just clarity.
+                </span>
               </p>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
+          <div className="space-y-32">
             {/* Feature 1: Track Your Mood */}
-            <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
-              <div className="relative bg-white/10 backdrop-blur-xl rounded-[3rem] p-4 border border-white/20 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[320px] w-full">
-                <div className="absolute -inset-4 bg-gradient-to-r from-teal-300/30 to-emerald-300/30 rounded-[3rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative h-[500px] w-full bg-gray-900 rounded-[2.5rem] overflow-hidden border-[6px] border-gray-800 shadow-inner">
-                  <Image
-                    src="/app-dashboard-hd.png"
-                    alt="Mood Tracking Interface"
-                    fill
-                    className="object-cover"
-                  />
-                  {/* CSS Patch: Fix "MoodFit" to "MoodWiser" */}
-                  <div className="absolute top-[7.8%] left-[7.5%] bg-white px-2 py-1 z-10 rounded-sm">
-                    <span className="text-[#3B82F6] font-[600] text-[1.2rem] tracking-tight">MoodWiser</span>
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-[3rem] p-6 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[360px] w-full">
+                  <div className="relative h-[600px] w-full bg-slate-950 rounded-[2.5rem] overflow-hidden border-[8px] border-slate-900 shadow-inner">
+                    <Image
+                      src="/app-dashboard-hd.png"
+                      alt="Mood Tracking Interface"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-[7.8%] left-[7.5%] bg-white px-2 py-1 z-10 rounded-sm">
+                      <span className="text-[#3B82F6] font-[600] text-[1.2rem] tracking-tight">MoodWiser</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="order-1 md:order-2 text-left space-y-8 fade-in-on-scroll">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-indigo-500/20 rounded-full border border-indigo-500/30 text-indigo-200 text-sm font-bold uppercase tracking-wider">
+                  <span>📊</span>
+                  <span>Insightful Tracking</span>
+                </div>
+                <h3 className="text-4xl md:text-5xl font-bold text-white">Track Your Mood</h3>
+                <p className="text-xl text-slate-300 leading-relaxed font-light">
+                  Understand your emotional patterns with our intuitive mood tracker. Log your feelings, identify triggers, and see your progress over time with beautiful visualizations.
+                </p>
+                <ul className="space-y-4 pt-4">
+                  {[
+                    'Daily mood logging with detailed emotions',
+                    'Identify triggers and patterns',
+                    'Visualize your emotional journey'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-4 text-lg text-slate-200">
+                      <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 text-indigo-300">
+                        ✓
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Feature 2: View Insights & Activities */}
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="text-left space-y-8 fade-in-on-scroll">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-500/20 rounded-full border border-teal-500/30 text-teal-200 text-sm font-bold uppercase tracking-wider">
+                  <span>🧘</span>
+                  <span>Calming Tools</span>
+                </div>
+                <h3 className="text-4xl md:text-5xl font-bold text-white">Quick Activities</h3>
+                <p className="text-xl text-slate-300 leading-relaxed font-light">
+                  Access a library of quick tools to calm your mind and body. From breathing exercises to relaxing games, find what works best for you in moments of stress.
+                </p>
+                <ul className="space-y-4 pt-4">
+                  {[
+                    'Instant breathing exercises',
+                    'Relaxing mini-games',
+                    'Guided reflection and journaling'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-4 text-lg text-slate-200">
+                      <div className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0 text-teal-300">
+                        ✓
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="relative group perspective-1000 flex justify-center">
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-[3rem] p-6 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[360px] w-full">
+                  <div className="relative h-[600px] w-full bg-slate-950 rounded-[2.5rem] overflow-hidden border-[8px] border-slate-900 shadow-inner">
+                    <Image
+                      src="/mobile-activities.png"
+                      alt="Activities Interface"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="order-1 md:order-2 text-left md:pl-10 space-y-6 fade-in-on-scroll">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-800/50 rounded-full border border-teal-600/50 text-teal-200 text-sm font-semibold">
-                <span>📊</span>
-                <span>Insightful Tracking</span>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold">Track Your Mood</h3>
-              <p className="text-lg text-teal-100 leading-relaxed">
-                Understand your emotional patterns with our intuitive mood tracker. Log your feelings, identify triggers, and see your progress over time with beautiful visualizations.
-              </p>
-              <ul className="space-y-4 pt-4">
-                {[
-                  'Daily mood logging with detailed emotions',
-                  'Identify triggers and patterns',
-                  'Visualize your emotional journey'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-teal-50">
-                    <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
-            {/* Feature 2: View Insights & Activities */}
-            <div className="text-left md:pr-10 space-y-6 fade-in-on-scroll">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-800/50 rounded-full border border-teal-600/50 text-teal-200 text-sm font-semibold">
-                <span>🧘</span>
-                <span>Calming Tools</span>
-              </div>
-              <h3 className="text-3xl md:text-4xl font-bold">Quick Activities</h3>
-              <p className="text-lg text-teal-100 leading-relaxed">
-                Access a library of quick tools to calm your mind and body. From breathing exercises to relaxing games, find what works best for you in moments of stress.
-              </p>
-              <ul className="space-y-4 pt-4">
-                {[
-                  'Instant breathing exercises',
-                  'Relaxing mini-games',
-                  'Guided reflection and journaling'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-teal-50">
-                    <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="relative group perspective-1000 flex justify-center">
-              <div className="relative bg-white/10 backdrop-blur-xl rounded-[3rem] p-4 border border-white/20 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[320px] w-full">
-                <div className="absolute -inset-4 bg-gradient-to-r from-teal-300/30 to-emerald-300/30 rounded-[3rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative w-full aspect-[9/19] bg-gray-900 rounded-[2.5rem] overflow-hidden border-[6px] border-gray-800 shadow-inner">
-                  <Image
-                    src="/mobile-activities.png"
-                    alt="Activities Interface"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
             {/* Feature 3: Library */}
-            <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
-              <div className="relative bg-white/10 backdrop-blur-xl rounded-[3rem] p-4 border border-white/20 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[320px] w-full">
-                <div className="absolute -inset-4 bg-gradient-to-r from-teal-300/30 to-emerald-300/30 rounded-[3rem] blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="relative w-full aspect-[9/19] bg-gray-900 rounded-[2.5rem] overflow-hidden border-[6px] border-gray-800 shadow-inner">
-                  <Image
-                    src="/mobile-library.png"
-                    alt="Resource Library Interface"
-                    fill
-                    className="object-cover"
-                  />
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-[3rem] p-6 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[360px] w-full">
+                  <div className="relative h-[600px] w-full bg-slate-950 rounded-[2.5rem] overflow-hidden border-[8px] border-slate-900 shadow-inner">
+                    <Image
+                      src="/mobile-library.png"
+                      alt="Resource Library Interface"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="order-1 md:order-2 text-left md:pl-10 space-y-6 fade-in-on-scroll">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-teal-800/50 rounded-full border border-teal-600/50 text-teal-200 text-sm font-semibold">
-                <span>📚</span>
-                <span>Knowledge Hub</span>
+              <div className="order-1 md:order-2 text-left space-y-8 fade-in-on-scroll">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-sky-500/20 rounded-full border border-sky-500/30 text-sky-200 text-sm font-bold uppercase tracking-wider">
+                  <span>📚</span>
+                  <span>Knowledge Hub</span>
+                </div>
+                <h3 className="text-4xl md:text-5xl font-bold text-white">Growth Library</h3>
+                <p className="text-xl text-slate-300 leading-relaxed font-light">
+                  Explore our comprehensive collection of guides, workbooks, and resources designed to support your emotional journey and personal growth.
+                </p>
+                <ul className="space-y-4 pt-4">
+                  {[
+                    'Expert-curated guides on anxiety & stress',
+                    'Interactive workbooks for self-reflection',
+                    'Daily learning and growth paths'
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-center gap-4 text-lg text-slate-200">
+                      <div className="w-8 h-8 rounded-full bg-sky-500/20 flex items-center justify-center flex-shrink-0 text-sky-300">
+                        ✓
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold">Growth Library</h3>
-              <p className="text-lg text-teal-100 leading-relaxed">
-                Explore our comprehensive collection of guides, workbooks, and resources designed to support your emotional journey and personal growth.
-              </p>
-              <ul className="space-y-4 pt-4">
-                {[
-                  'Expert-curated guides on anxiety & stress',
-                  'Interactive workbooks for self-reflection',
-                  'Daily learning and growth paths'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-teal-50">
-                    <div className="w-6 h-6 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
 
           {/* New Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mt-32">
             {[
-              { title: 'AI Stress Companion', icon: '🤖', desc: 'Chat with our empathetic AI to instantly release stress and find clarity.' },
-              { title: 'Calm Points', icon: '💎', desc: 'Earn rewards for taking care of your mental health.' },
-              { title: 'Daily Streak', icon: '🔥', desc: 'Build lasting habits with our motivating streak system.' }
+              { title: 'AI Stress Companion', icon: '🤖', desc: 'Chat with our empathetic AI to instantly release stress and find clarity.', color: 'from-indigo-500/20 to-purple-500/20' },
+              { title: 'Calm Points', icon: '💎', desc: 'Earn rewards for taking care of your mental health.', color: 'from-sky-500/20 to-teal-500/20' },
+              { title: 'Daily Streak', icon: '🔥', desc: 'Build lasting habits with our motivating streak system.', color: 'from-orange-500/20 to-red-500/20' }
             ].map((feature, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:bg-white/20 transition-all duration-300 hover:-translate-y-2 group">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                <h4 className="text-xl font-bold mb-3">{feature.title}</h4>
-                <p className="text-teal-100 text-sm leading-relaxed">{feature.desc}</p>
+              <div key={idx} className={`bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden`}>
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                <div className="relative z-10">
+                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 bg-white/10 w-20 h-20 rounded-2xl flex items-center justify-center">{feature.icon}</div>
+                  <h4 className="text-2xl font-bold mb-3 text-white">{feature.title}</h4>
+                  <p className="text-slate-300 text-base leading-relaxed">{feature.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -606,44 +619,127 @@ export default function Home() {
         </div>
       </section >
 
-      {/* Ready to Start Journey Section - Clean White */}
-      < section className="py-20 px-6 bg-white relative overflow-hidden" >
-        <div className="container mx-auto max-w-5xl text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 tracking-tight">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Join thousands who have found their balance. Download MoodWiser today.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <a
-              href="https://apps.apple.com/pk/app/moodwiser/id6755422630"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-colors shadow-lg flex items-center gap-3 cursor-pointer"
-            >
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#ffffff">
-                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-              </svg>
-              Download on App Store
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.moodwiser.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 text-gray-900 border border-gray-300 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors shadow-md flex items-center gap-3 cursor-pointer"
-            >
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#4285F4" />
-                <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#34A853" />
-                <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.5 12.92 20.16 13.19L17.19 15.22L14.54 12.85L17.19 10.47L20.16 10.81Z" fill="#FBBC04" />
-                <path d="M16.81 8.88L14.54 11.15L6.05 2.66L16.81 8.88Z" fill="#EA4335" />
-              </svg>
-              Get it on Google Play
-            </a>
+      {/* Ready to Start Journey Section - Comparison Layout */}
+      <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-100/40 rounded-full blur-[120px] -z-10"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-100/40 rounded-full blur-[100px] -z-10"></div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-slate-900 tracking-tight">
+              Choose Your Path to Calm
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              Whether you need a deep emotional reset or daily maintenance, we have the right tool for you.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* Option 1: The Program - Premium Highlight */}
+            <div className="bg-white rounded-[2.5rem] p-10 border-2 border-indigo-100 shadow-2xl shadow-indigo-100/50 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+              <div className="absolute top-0 right-0 bg-gradient-to-l from-indigo-600 to-purple-600 text-white text-xs font-bold px-4 py-2 rounded-bl-2xl uppercase tracking-wider shadow-lg">Recommended for Change</div>
+
+              {/* Gradient Header BG */}
+              <div className="absolute top-0 left-0 w-full h-[240px] bg-gradient-to-b from-indigo-50/50 to-transparent -z-10"></div>
+
+              <div className="mb-10 text-center relative">
+                <div className="w-20 h-20 mx-auto rounded-3xl bg-white shadow-lg shadow-indigo-100 flex items-center justify-center text-4xl mb-6 text-indigo-600 border border-indigo-50 group-hover:scale-110 transition-transform duration-500">🎓</div>
+                <h3 className="text-3xl font-extrabold text-slate-900 mb-2">21-Day Program</h3>
+                <p className="text-indigo-600 font-bold tracking-wide uppercase text-sm">Deep Emotional Reset</p>
+              </div>
+
+              <ul className="space-y-5 mb-12 flex-1 px-2">
+                {[
+                  { t: "Step-by-step 3 week course", d: "Structured daily guidance." },
+                  { t: "Heal the root cause", d: "Understand why you feel this way." },
+                  { t: "Trauma & Trigger work", d: "Resolve past emotional wounds." },
+                  { t: "Build Unshakeable Choice", d: "Stop seeking external validation." },
+                  { t: "Master Relationships", d: "Set boundaries without guilt." },
+                  { t: "Permanent Mindset Shift", d: "Rewire how you respond to stress." },
+                  { t: "Lifetime Access", d: "Revisit the content forever." }
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center shrink-0 text-indigo-600 text-xs font-bold">✓</div>
+                    <div>
+                      <span className="block text-slate-800 font-bold text-lg leading-tight">{item.t}</span>
+                      <span className="block text-slate-500 text-sm mt-1">{item.d}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                href="/program"
+                className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white py-5 rounded-2xl font-bold text-lg hover:shadow-xl hover:shadow-slate-300/50 transition-all flex items-center justify-center gap-2 group/btn relative overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
+                <span className="relative">Start Program ($27)</span>
+                <span className="relative group-hover/btn:translate-x-1 transition-transform">→</span>
+              </Link>
+            </div>
+
+            {/* Option 2: The App */}
+            <div className="bg-white rounded-[2.5rem] p-10 border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
+              <div className="absolute top-0 left-0 w-full h-[240px] bg-gradient-to-b from-slate-50/80 to-transparent -z-10"></div>
+
+              <div className="mb-10 text-center relative">
+                <div className="w-20 h-20 mx-auto rounded-3xl bg-white shadow-lg shadow-slate-100 flex items-center justify-center text-4xl mb-6 text-slate-600 border border-slate-50 group-hover:scale-110 transition-transform duration-500">📱</div>
+                <h3 className="text-3xl font-extrabold text-slate-900 mb-2">MoodWiser App</h3>
+                <p className="text-slate-500 font-bold tracking-wide uppercase text-sm">Daily Maintenance</p>
+              </div>
+
+              <ul className="space-y-5 mb-12 flex-1 px-2">
+                {[
+                  { t: "Panic Button Relief", d: "Instant calm in < 2 minutes." },
+                  { t: "Daily Mood Tracking", d: "See your emotional patterns." },
+                  { t: "Sleep Stories & Sounds", d: "Drift off effortlessly." },
+                  { t: "Guided Meditations", d: "For anxiety, focus, and sleep." },
+                  { t: "Journaling Prompts", d: "Get thoughts out of your head." },
+                  { t: "Breathing Exercises", d: "Regulate your nervous system." },
+                  { t: "Pocket Companion", d: "Support wherever you go." }
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <div className="mt-1 w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 text-xs font-bold">✓</div>
+                    <div>
+                      <span className="block text-slate-800 font-bold text-lg leading-tight">{item.t}</span>
+                      <span className="block text-slate-500 text-sm mt-1">{item.d}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-col gap-3">
+                <a
+                  href="https://apps.apple.com/pk/app/moodwiser/id6755422630"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-black text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:opacity-80 transition-opacity shadow-lg"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="#ffffff">
+                    <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                  </svg>
+                  <span>App Store ($11/mo)</span>
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.moodwiser.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-white text-slate-900 border border-slate-200 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-slate-50 transition-colors shadow-sm"
+                >
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#4285F4" />
+                    <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#34A853" />
+                    <path d="M20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.5 12.92 20.16 13.19L17.19 15.22L14.54 12.85L17.19 10.47L20.16 10.81Z" fill="#FBBC04" />
+                    <path d="M16.81 8.88L14.54 11.15L6.05 2.66L16.81 8.88Z" fill="#EA4335" />
+                  </svg>
+                  <span>Google Play</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </section >
+      </section>
       <section className="py-20 px-6 bg-gradient-to-b from-white via-slate-50/20 to-white relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-20 w-72 h-72 bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -1092,7 +1188,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Show only latest 6 blogs on homepage - can easily scale to 100-1000+ with pagination */}
             {blogs.slice(0, 6).map((blog, index) => (
-                <Link
+              <Link
                 key={blog.id}
                 href={`/blog/${blog.slug}`}
                 className="group block bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-glow transition-all duration-500 transform hover:-translate-y-4 fade-in-on-scroll border border-gray-100/50 cursor-pointer"
