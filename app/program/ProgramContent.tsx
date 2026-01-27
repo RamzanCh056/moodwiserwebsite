@@ -3,8 +3,11 @@
 import { useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
+import PaymentButton from "@/components/PaymentButton";
+import { useAuth } from "@/lib/firebaseAuth";
 
 export default function ProgramContent() {
+    const { user, hasPaidAccess } = useAuth();
     const [activeWeek, setActiveWeek] = useState(1);
     const [showDownloadModal, setShowDownloadModal] = useState(false);
 
@@ -65,14 +68,22 @@ export default function ProgramContent() {
                             </span>
                         </Link>
                         <div className="hidden md:flex items-center space-x-8">
-                            <Link href="/" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Home</Link>
-                            <Link href="/#products" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Products</Link>
-                            <Link href="/program" className="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full transition-colors">
+                            <Link href="/" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Home</Link>
+                            <Link href="/#products" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Products</Link>
+                            <Link href="/program" className="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full transition-colors cursor-pointer">
                                 Program
                             </Link>
-                            <Link href="/#blogs" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Blogs</Link>
-                            <Link href="/#about" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">About Us</Link>
-                            <Link href="/#contact" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">Contact Us</Link>
+                            <Link href="/#blogs" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Blogs</Link>
+                            <Link href="/#about" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">About Us</Link>
+                            <Link href="/#contact" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Contact Us</Link>
+                            {hasPaidAccess && (
+                                <Link
+                                    href="/course"
+                                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-105 transition-all cursor-pointer"
+                                >
+                                    🎓 Access Course
+                                </Link>
+                            )}
                         </div>
                         {/* Mobile Menu Button Placeholder */}
                         <div className="md:hidden">
@@ -84,8 +95,26 @@ export default function ProgramContent() {
                 </nav>
             </header>
 
+            {/* Access Banner for Paid Users */}
+            {hasPaidAccess && (
+                <div className="fixed top-20 left-0 right-0 z-40 bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg">
+                    <div className="container mx-auto px-6 py-3 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <span className="text-2xl">🎓</span>
+                            <span className="font-semibold">You have full access! Start your 21-day journey now.</span>
+                        </div>
+                        <Link
+                            href="/course"
+                            className="bg-white text-emerald-600 px-6 py-2 rounded-full font-bold hover:bg-emerald-50 transition-all transform hover:scale-105 cursor-pointer"
+                        >
+                            Go to Course →
+                        </Link>
+                    </div>
+                </div>
+            )}
+
             {/* COMPACT HERO SECTION */}
-            <section className="pt-32 pb-16 px-6 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-50 via-white to-white">
+            <section className={`${hasPaidAccess ? 'pt-40' : 'pt-32'} pb-16 px-6 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-50 via-white to-white`}>
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                     <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-sky-200/20 rounded-full blur-[100px] animate-pulse"></div>
                     <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-[80px] animate-pulse delay-1000"></div>
@@ -99,7 +128,7 @@ export default function ProgramContent() {
                                 The 21-Day Reset
                             </span>
 
-                            <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tighter leading-[1.0] text-slate-900">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-slate-900">
                                 Emotions Are <br />
                                 <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">Wisdom.</span>
                             </h1>
@@ -108,19 +137,75 @@ export default function ProgramContent() {
                                 Stop fighting anxiety. Start understanding it. A guided audio journey to reclaim calm in a pressurised world.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                                <button className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[200px] overflow-hidden">
-                                    <span className="text-2xl">🎓</span>
-                                    <span>Start Program</span>
-                                    <span className="text-indigo-100 font-normal border-l border-indigo-400/30 pl-3 ml-1">$27</span>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                                </button>
+                            <div className="flex items-center gap-4 pt-2">
+                                <div className="flex items-center gap-2 px-3 py-1.5 bg-white/80 backdrop-blur-sm rounded-full border border-slate-200 shadow-sm">
+                                    <span className="text-lg">🇬🇧</span>
+                                    <span className="text-xs font-semibold text-slate-700">English</span>
+                                </div>
+                                <div className="flex items-center gap-2 px-3 py-1.5 bg-white/80 backdrop-blur-sm rounded-full border border-slate-200 shadow-sm">
+                                    <span className="text-lg">🇪🇸</span>
+                                    <span className="text-xs font-semibold text-slate-700">Spanish</span>
+                                </div>
+                                <span className="text-sm text-slate-500 italic">Both languages available</span>
+                            </div>
+
+                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                {hasPaidAccess ? (
+                                    <Link
+                                        href="/course"
+                                        className="group relative bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[200px] overflow-hidden cursor-pointer"
+                                    >
+                                        <span className="text-2xl">🎓</span>
+                                        <span>Access Course</span>
+                                        <span className="relative group-hover:translate-x-1 transition-transform">→</span>
+                                    </Link>
+                                ) : (
+                                    <PaymentButton price="$27" className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[200px] overflow-hidden" />
+                                )}
                                 <button
                                     onClick={() => setShowDownloadModal(true)}
-                                    className="bg-white text-[#111827] border border-slate-200 px-8 py-4 rounded-full font-bold hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 min-w-[200px]"
+                                    className="group relative bg-white text-[#111827] border border-slate-200 px-8 py-4 rounded-full font-bold hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-3 min-w-[220px] cursor-pointer overflow-hidden"
                                 >
-                                    Download App
+                                    <div className="relative z-10 flex items-center gap-2">
+                                        <div className="w-8 h-8 rounded-full bg-sky-50 flex items-center justify-center text-sky-500 shadow-sm">
+                                            {/* Mobile icon */}
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <rect x="7" y="3" width="10" height="18" rx="2" ry="2" strokeWidth={2}></rect>
+                                                <circle cx="12" cy="18" r="0.8" fill="currentColor" />
+                                            </svg>
+                                        </div>
+                                        <div className="flex flex-col items-start leading-tight">
+                                            <span className="text-sm font-bold text-slate-900">Download App</span>
+                                            <span className="text-xs font-medium text-slate-400">Free to explore</span>
+                                        </div>
+                                    </div>
+                                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-slate-100 via-white/40 to-slate-100 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                                 </button>
+                            </div>
+
+                            {/* Hero Stats */}
+                            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl text-sm">
+                                <div className="flex items-center gap-3 rounded-2xl bg-white/80 border border-slate-100 px-4 py-3 shadow-sm">
+                                    <div className="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center text-sky-500 text-lg">21</div>
+                                    <div>
+                                        <p className="font-semibold text-slate-800">Guided Days</p>
+                                        <p className="text-slate-500 text-xs">8–12 minutes each</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3 rounded-2xl bg-white/80 border border-slate-100 px-4 py-3 shadow-sm">
+                                    <div className="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 text-lg">🌍</div>
+                                    <div>
+                                        <p className="font-semibold text-slate-800">2 Languages</p>
+                                        <p className="text-slate-500 text-xs">English & Spanish</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3 rounded-2xl bg-white/80 border border-slate-100 px-4 py-3 shadow-sm">
+                                    <div className="w-8 h-8 rounded-xl bg-purple-50 flex items-center justify-center text-purple-500 text-lg">$</div>
+                                    <div>
+                                        <p className="font-semibold text-slate-800">One-Time</p>
+                                        <p className="text-slate-500 text-xs">Lifetime access • $27</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -190,12 +275,18 @@ export default function ProgramContent() {
                             <h2 className="text-2xl md:text-4xl font-bold mb-8 leading-tight">"We are taught to control, suppress, or medicate. But emotions are <span className="text-indigo-400">signals</span>, not enemies."</h2>
 
                             <div className="flex justify-center mb-8">
-                                <button className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[240px] overflow-hidden">
-                                    <span className="text-2xl">🎓</span>
-                                    <span className="text-lg">Start 21-Day Program</span>
-                                    <span className="text-indigo-100 font-normal border-l border-indigo-400/30 pl-3 ml-1">$27</span>
-                                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                                </button>
+                                {hasPaidAccess ? (
+                                    <Link
+                                        href="/course"
+                                        className="group relative bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[240px] overflow-hidden cursor-pointer"
+                                    >
+                                        <span className="text-2xl">🎓</span>
+                                        <span className="text-lg">Access Your Course</span>
+                                        <span className="relative group-hover:translate-x-1 transition-transform">→</span>
+                                    </Link>
+                                ) : (
+                                    <PaymentButton price="$27" className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[240px] overflow-hidden" />
+                                )}
                             </div>
 
                             <p className="text-slate-300 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
@@ -237,7 +328,18 @@ export default function ProgramContent() {
                 <div className="container mx-auto max-w-5xl relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-slate-900 tracking-tight">The 21-Day Journey</h2>
-                        <p className="text-lg text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">Structured for real life. 8-12 minutes a day. A step-by-step path to reclaiming your calm.</p>
+                        <p className="text-lg text-slate-500 max-w-2xl mx-auto font-light leading-relaxed mb-4">Structured for real life. 8-12 minutes a day. A step-by-step path to reclaiming your calm.</p>
+                        <div className="flex items-center justify-center gap-4 mt-6">
+                            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-sky-50 to-indigo-50 rounded-full border border-sky-200">
+                                <span className="text-xl">🇬🇧</span>
+                                <span className="text-sm font-semibold text-slate-700">English Audio</span>
+                            </div>
+                            <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-full border border-emerald-200">
+                                <span className="text-xl">🇪🇸</span>
+                                <span className="text-sm font-semibold text-slate-700">Spanish Audio</span>
+                            </div>
+                        </div>
+                        <p className="text-sm text-slate-400 mt-4 italic">Both languages available for all 21 days</p>
                     </div>
 
                     {/* Tabs Header */}
@@ -282,15 +384,63 @@ export default function ProgramContent() {
                                             { d: "06", t: "Why Motivation Fails", desc: "Discipline without calm breaks you." },
                                             { d: "07", t: "Emotional Reset", desc: "Reflection & grounding." }
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-slate-50/50 hover:bg-white transition-all duration-300 border border-transparent hover:border-emerald-100 hover:shadow-lg hover:shadow-emerald-100/20 group/item cursor-default">
-                                                <span className="text-xs font-bold text-emerald-600 bg-emerald-100 px-2.5 py-1 rounded-lg group-hover/item:bg-emerald-600 group-hover/item:text-white transition-colors duration-300">{item.d}</span>
-                                                <div>
-                                                    <h4 className="font-bold text-slate-800 text-sm group-hover/item:text-emerald-700 transition-colors">{item.t}</h4>
-                                                    <p className="text-slate-500 text-xs mt-1 leading-relaxed">{item.desc}</p>
+                                            <div key={i} className={`flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 border relative ${
+                                                hasPaidAccess 
+                                                    ? 'bg-slate-50/50 hover:bg-white border-transparent hover:border-emerald-100 hover:shadow-lg hover:shadow-emerald-100/20 group/item cursor-default' 
+                                                    : 'bg-slate-100/50 border-slate-200 opacity-75'
+                                            }`}>
+                                                {!hasPaidAccess && (
+                                                    <div className="absolute top-2 right-2 text-slate-400">
+                                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                        </svg>
+                                                    </div>
+                                                )}
+                                                <span className={`text-xs font-bold px-2.5 py-1 rounded-lg transition-colors duration-300 ${
+                                                    hasPaidAccess 
+                                                        ? 'text-emerald-600 bg-emerald-100 group-hover/item:bg-emerald-600 group-hover/item:text-white' 
+                                                        : 'text-slate-400 bg-slate-200'
+                                                }`}>{item.d}</span>
+                                                <div className="flex-1">
+                                                    <h4 className={`font-bold text-sm transition-colors ${
+                                                        hasPaidAccess 
+                                                            ? 'text-slate-800 group-hover/item:text-emerald-700' 
+                                                            : 'text-slate-400'
+                                                    }`}>{item.t}</h4>
+                                                    <p className={`text-xs mt-1 leading-relaxed ${
+                                                        hasPaidAccess ? 'text-slate-500' : 'text-slate-400'
+                                                    }`}>{item.desc}</p>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
+                                    {!hasPaidAccess && (
+                                        <div className="mt-8 p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/30 rounded-full blur-3xl"></div>
+                                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-200/30 rounded-full blur-2xl"></div>
+                                            <div className="relative z-10">
+                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                                                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                    </svg>
+                                                </div>
+                                                <h3 className="text-2xl font-bold text-slate-800 mb-2">Unlock All 21 Days</h3>
+                                                <p className="text-slate-600 mb-2">Get lifetime access to the complete program</p>
+                                                <div className="flex items-center justify-center gap-3 mb-6 text-sm text-slate-500">
+                                                    <span className="flex items-center gap-1">
+                                                        <span>🇬🇧</span> English
+                                                    </span>
+                                                    <span>•</span>
+                                                    <span className="flex items-center gap-1">
+                                                        <span>🇪🇸</span> Spanish
+                                                    </span>
+                                                    <span>•</span>
+                                                    <span>📄 PDF Guide</span>
+                                                </div>
+                                                <PaymentButton price="$27" className="mx-auto shadow-2xl" />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )}
@@ -317,15 +467,63 @@ export default function ProgramContent() {
                                             { d: "13", t: "Respect & Self-Worth", desc: "Internal vs external validation." },
                                             { d: "14", t: "Strength Checkpoint", desc: "Reinforce habits." }
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-slate-50/50 hover:bg-white transition-all duration-300 border border-transparent hover:border-indigo-100 hover:shadow-lg hover:shadow-indigo-100/20 group/item cursor-default">
-                                                <span className="text-xs font-bold text-indigo-600 bg-indigo-100 px-2.5 py-1 rounded-lg group-hover/item:bg-indigo-600 group-hover/item:text-white transition-colors duration-300">{item.d}</span>
-                                                <div>
-                                                    <h4 className="font-bold text-slate-800 text-sm group-hover/item:text-indigo-700 transition-colors">{item.t}</h4>
-                                                    <p className="text-slate-500 text-xs mt-1 leading-relaxed">{item.desc}</p>
+                                            <div key={i} className={`flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 border relative ${
+                                                hasPaidAccess 
+                                                    ? 'bg-slate-50/50 hover:bg-white border-transparent hover:border-indigo-100 hover:shadow-lg hover:shadow-indigo-100/20 group/item cursor-default' 
+                                                    : 'bg-slate-100/50 border-slate-200 opacity-75'
+                                            }`}>
+                                                {!hasPaidAccess && (
+                                                    <div className="absolute top-2 right-2 text-slate-400">
+                                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                        </svg>
+                                                    </div>
+                                                )}
+                                                <span className={`text-xs font-bold px-2.5 py-1 rounded-lg transition-colors duration-300 ${
+                                                    hasPaidAccess 
+                                                        ? 'text-indigo-600 bg-indigo-100 group-hover/item:bg-indigo-600 group-hover/item:text-white' 
+                                                        : 'text-slate-400 bg-slate-200'
+                                                }`}>{item.d}</span>
+                                                <div className="flex-1">
+                                                    <h4 className={`font-bold text-sm transition-colors ${
+                                                        hasPaidAccess 
+                                                            ? 'text-slate-800 group-hover/item:text-indigo-700' 
+                                                            : 'text-slate-400'
+                                                    }`}>{item.t}</h4>
+                                                    <p className={`text-xs mt-1 leading-relaxed ${
+                                                        hasPaidAccess ? 'text-slate-500' : 'text-slate-400'
+                                                    }`}>{item.desc}</p>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
+                                    {!hasPaidAccess && (
+                                        <div className="mt-8 p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/30 rounded-full blur-3xl"></div>
+                                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-200/30 rounded-full blur-2xl"></div>
+                                            <div className="relative z-10">
+                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                                                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                    </svg>
+                                                </div>
+                                                <h3 className="text-2xl font-bold text-slate-800 mb-2">Unlock All 21 Days</h3>
+                                                <p className="text-slate-600 mb-2">Get lifetime access to the complete program</p>
+                                                <div className="flex items-center justify-center gap-3 mb-6 text-sm text-slate-500">
+                                                    <span className="flex items-center gap-1">
+                                                        <span>🇬🇧</span> English
+                                                    </span>
+                                                    <span>•</span>
+                                                    <span className="flex items-center gap-1">
+                                                        <span>🇪🇸</span> Spanish
+                                                    </span>
+                                                    <span>•</span>
+                                                    <span>📄 PDF Guide</span>
+                                                </div>
+                                                <PaymentButton price="$27" className="mx-auto shadow-2xl" />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )}
@@ -352,15 +550,63 @@ export default function ProgramContent() {
                                             { d: "20", t: "New Emotional Identity", desc: "Strength without hardness." },
                                             { d: "21", t: "Calm Power Commitment", desc: "Transition to MoodWiser app." }
                                         ].map((item, i) => (
-                                            <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-slate-50/50 hover:bg-white transition-all duration-300 border border-transparent hover:border-purple-100 hover:shadow-lg hover:shadow-purple-100/20 group/item cursor-default">
-                                                <span className="text-xs font-bold text-purple-600 bg-purple-100 px-2.5 py-1 rounded-lg group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors duration-300">{item.d}</span>
-                                                <div>
-                                                    <h4 className="font-bold text-slate-800 text-sm group-hover/item:text-purple-700 transition-colors">{item.t}</h4>
-                                                    <p className="text-slate-500 text-xs mt-1 leading-relaxed">{item.desc}</p>
+                                            <div key={i} className={`flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 border relative ${
+                                                hasPaidAccess 
+                                                    ? 'bg-slate-50/50 hover:bg-white border-transparent hover:border-purple-100 hover:shadow-lg hover:shadow-purple-100/20 group/item cursor-default' 
+                                                    : 'bg-slate-100/50 border-slate-200 opacity-75'
+                                            }`}>
+                                                {!hasPaidAccess && (
+                                                    <div className="absolute top-2 right-2 text-slate-400">
+                                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                        </svg>
+                                                    </div>
+                                                )}
+                                                <span className={`text-xs font-bold px-2.5 py-1 rounded-lg transition-colors duration-300 ${
+                                                    hasPaidAccess 
+                                                        ? 'text-purple-600 bg-purple-100 group-hover/item:bg-purple-600 group-hover/item:text-white' 
+                                                        : 'text-slate-400 bg-slate-200'
+                                                }`}>{item.d}</span>
+                                                <div className="flex-1">
+                                                    <h4 className={`font-bold text-sm transition-colors ${
+                                                        hasPaidAccess 
+                                                            ? 'text-slate-800 group-hover/item:text-purple-700' 
+                                                            : 'text-slate-400'
+                                                    }`}>{item.t}</h4>
+                                                    <p className={`text-xs mt-1 leading-relaxed ${
+                                                        hasPaidAccess ? 'text-slate-500' : 'text-slate-400'
+                                                    }`}>{item.desc}</p>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
+                                    {!hasPaidAccess && (
+                                        <div className="mt-8 p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/30 rounded-full blur-3xl"></div>
+                                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-200/30 rounded-full blur-2xl"></div>
+                                            <div className="relative z-10">
+                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                                                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                                    </svg>
+                                                </div>
+                                                <h3 className="text-2xl font-bold text-slate-800 mb-2">Unlock All 21 Days</h3>
+                                                <p className="text-slate-600 mb-2">Get lifetime access to the complete program</p>
+                                                <div className="flex items-center justify-center gap-3 mb-6 text-sm text-slate-500">
+                                                    <span className="flex items-center gap-1">
+                                                        <span>🇬🇧</span> English
+                                                    </span>
+                                                    <span>•</span>
+                                                    <span className="flex items-center gap-1">
+                                                        <span>🇪🇸</span> Spanish
+                                                    </span>
+                                                    <span>•</span>
+                                                    <span>📄 PDF Guide</span>
+                                                </div>
+                                                <PaymentButton price="$27" className="mx-auto shadow-2xl" />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )}
@@ -434,10 +680,18 @@ export default function ProgramContent() {
                             </div>
                             <h3 className="text-2xl font-bold text-white mb-3 relative z-10">21-Day Program</h3>
                             <p className="text-slate-400 mb-8 flex-1 leading-relaxed relative z-10">Lifetime access to the full course. Reset your mind.</p>
-                            <button className="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl hover:brightness-110 transition-all shadow-lg shadow-indigo-900/50 relative z-10 overflow-hidden">
-                                <span className="relative z-10">Start Now ($27)</span>
-                                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                            </button>
+                            {hasPaidAccess ? (
+                                <Link
+                                    href="/course"
+                                    className="w-full py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-2xl hover:brightness-110 transition-all shadow-lg shadow-emerald-900/50 relative z-10 overflow-hidden flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    <span>🎓</span>
+                                    <span>Access Course</span>
+                                    <span>→</span>
+                                </Link>
+                            ) : (
+                                <PaymentButton price="$27" className="w-full py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-2xl hover:brightness-110 transition-all shadow-lg shadow-indigo-900/50 relative z-10 overflow-hidden" />
+                            )}
                         </div>
                     </div>
 

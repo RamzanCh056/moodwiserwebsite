@@ -3,12 +3,30 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAuth } from '@/lib/firebaseAuth';
 
 export default function Home() {
+  const { user, signOut, hasPaidAccess } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [showToast, setShowToast] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+
+  useEffect(() => {
+    // Close user menu when clicking outside
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.user-menu-container')) {
+        setShowUserMenu(false);
+      }
+    };
+
+    if (showUserMenu) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [showUserMenu]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,6 +148,24 @@ export default function Home() {
   };
 
   const blogs = [
+    {
+      id: 'hidden-price-pretty',
+      title: 'The Hidden Price of "Pretty": How Social Media Is Reshaping Confidence, Childhood, and Emotional Health',
+      description: 'Pretty has a price. And no one is talking about who pays it. Explore how social media is reshaping confidence, childhood, and emotional health.',
+      gradient: 'from-rose-400 via-pink-400 to-purple-400',
+      imageGradient: 'from-rose-100 via-pink-100 to-purple-100',
+      slug: 'hidden-price-pretty',
+      imageUrl: '/blog1.png'
+    },
+    {
+      id: 'perfection-to-presence',
+      title: 'From Perfection to Presence: How We Protect Confidence in a World Obsessed With Beauty',
+      description: 'Confidence doesn\'t disappear overnight. It erodes quietly—through pressure, comparison, and fear. Discover how to protect confidence in a world obsessed with beauty.',
+      gradient: 'from-teal-400 via-cyan-400 to-blue-400',
+      imageGradient: 'from-teal-100 via-cyan-100 to-blue-100',
+      slug: 'perfection-to-presence',
+      imageUrl: '/blog2.png'
+    },
     {
       id: 'gen-z-anxiety-guide',
       title: 'Gen Z Guide to Understanding Anxiety Responses',
@@ -270,7 +306,7 @@ export default function Home() {
               </button>
               <Link
                 href="/program"
-                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500"
+                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
               >
                 Program
               </Link>
@@ -295,6 +331,65 @@ export default function Home() {
                 Contact Us
                 {activeSection === 'contact' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-400 to-cyan-400"></span>}
               </button>
+              
+              {/* User Menu */}
+              {user ? (
+                <div className="relative user-menu-container">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowUserMenu(!showUserMenu);
+                    }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-sky-100 to-slate-100 hover:from-sky-200 hover:to-slate-200 transition-all cursor-pointer"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-sky-400 to-slate-400 flex items-center justify-center text-white font-bold text-sm">
+                      {user.email?.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-sm font-medium text-gray-700">{user.email?.split('@')[0]}</span>
+                    {hasPaidAccess && (
+                      <span className="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded-full">✓ Paid</span>
+                    )}
+                  </button>
+                  
+                  {showUserMenu && (
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border border-gray-100 py-2 z-50">
+                      <div className="px-4 py-3 border-b border-gray-100">
+                        <p className="text-sm font-semibold text-gray-800">{user.email}</p>
+                        {hasPaidAccess ? (
+                          <p className="text-xs text-green-600 mt-1">✓ Program Access</p>
+                        ) : (
+                          <p className="text-xs text-gray-500 mt-1">No active subscription</p>
+                        )}
+                      </div>
+                      {hasPaidAccess && (
+                        <Link
+                          href="/course"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer"
+                          onClick={() => setShowUserMenu(false)}
+                        >
+                          🎓 Access Course
+                        </Link>
+                      )}
+                      <button
+                        onClick={async () => {
+                          await signOut();
+                          setShowUserMenu(false);
+                        }}
+                        className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  className="px-6 py-2 bg-gradient-to-r from-sky-500 to-slate-500 text-white rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all cursor-pointer"
+                >
+                  Login
+                </Link>
+              )}
             </div>
             <div className="md:hidden">
               <button className="text-gray-700 cursor-pointer">☰</button>
@@ -305,7 +400,7 @@ export default function Home() {
 
       {/* Hero Section with Beautiful Background Image */}
       {/* Hero Section with Split Layout & Dashboard Mockup */}
-      <section id="home" className="pt-32 pb-24 px-6 relative overflow-hidden min-h-screen flex items-center bg-white">
+      <section id="home" className="pt-20 pb-20 px-6 relative overflow-hidden min-h-[80vh] flex items-start bg-white">
 
         {/* Premium Background Gradients */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -315,38 +410,35 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
 
             {/* Left Content */}
-            <div className="text-center lg:text-left space-y-10 fade-in">
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-white/60 backdrop-blur-md rounded-full shadow-sm border border-white/50 hover:shadow-md transition-shadow duration-300">
+            <div className="text-center lg:text-left space-y-6 fade-in max-w-xl">
+              <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-white/70">
                 <span className="flex h-2.5 w-2.5 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-sky-500"></span>
                 </span>
-                <span className="text-sm font-semibold text-slate-600 tracking-wide uppercase">
-                  Where emotions meet Wisdom
+                <span className="text-[11px] md:text-xs font-semibold text-slate-600 tracking-[0.2em] uppercase">
+                  Emotions Are Wisdom
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-slate-900">
-                <span className="block">
-                  Stop Fighting
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
+                <span className="block mb-1">
+                  Calm is not
                 </span>
-                <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent pb-2">
-                  Your Anxiety.
-                </span>
-                <span className="block text-slate-800 mt-1">
-                  Start Understanding It.
+                <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
+                  weakness.
                 </span>
               </h1>
 
-              <p className="text-xl text-slate-600 leading-relaxed max-w-lg mx-auto lg:mx-0 font-medium">
-                Discover the power of emotional awareness. Build resilience, find balance, and create lasting peace in your daily life.
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
+                Your anxiety is not a failure — it&apos;s a signal. We help you understand it, calm your body, and feel safe again in a world that won&apos;t slow down.
               </p>
 
               {/* App Store Buttons */}
-              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 fade-in-delay lg:ml-0 pt-2">
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 fade-in-delay lg:ml-0 pt-4">
                 <Link
                   href="/program"
                   className="group relative flex items-center gap-3.5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-7 py-4.5 rounded-2xl hover:from-slate-800 hover:via-slate-700 hover:to-slate-800 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-slate-900/30 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[240px] h-[76px] justify-center cursor-pointer overflow-hidden border border-slate-700/50"
@@ -455,17 +547,24 @@ export default function Home() {
             <div className="max-w-3xl mx-auto space-y-8 font-light leading-relaxed text-slate-300 text-lg md:text-2xl">
               <p>
                 We live in a world that never seems to slow down.
-                Every scroll. Every notification. Every moment is pulling at your attention.
+              </p>
+              <p>
+                Every scroll. Every notification.
+              </p>
+              <p>
+                Every moment is pulling at your attention.
               </p>
               <p className="font-medium text-white border-l-4 border-indigo-500 pl-6 my-8">
                 MoodWiser was created for those moments when you pause —
+              </p>
+              <p className="font-medium text-white border-l-4 border-indigo-500 pl-6">
                 to breathe, notice, and understand what you're actually feeling.
               </p>
               <p>
                 Return to calm—on your own terms.
-                <span className="block mt-4 text-sky-200 italic font-normal">
-                  No pressure. No judgment. Just clarity.
-                </span>
+              </p>
+              <p className="block mt-4 text-sky-200 italic font-normal">
+                No pressure. No judgment. Just clarity.
               </p>
             </div>
           </div>
@@ -811,66 +910,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Products Section */}
+      {/* Calm Picks Section */}
       <section id="products" className="py-20 px-6 bg-gradient-to-b from-white via-purple-50/20 to-white relative overflow-hidden">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 fade-in-on-scroll">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-sky-400 to-slate-400 bg-clip-text text-transparent">
-              Serene Collection
+              Calm Pick
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Wear tranquility with our calming, nature-inspired designs
+              Hand-picked tools we genuinely love for nervous system calm and emotional reset.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                name: 'Ocean Breeze',
-                color: 'from-sky-200 to-sky-400',
-                imageUrl: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&h=1000&fit=crop&q=80&auto=format'
-              },
-              {
-                name: 'Forest Calm',
-                color: 'from-slate-200 to-slate-400',
-                imageUrl: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=800&h=1000&fit=crop&q=80&auto=format'
-              },
-              {
-                name: 'Lavender Dreams',
-                color: 'from-purple-200 to-purple-400',
-                imageUrl: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&h=1000&fit=crop&q=80&auto=format'
-              },
-            ].map((product, index) => (
-              <div
-                key={index}
-                onClick={() => handleProductClick(product.name)}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 fade-in-on-scroll cursor-pointer border border-gray-100/50"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="h-64 relative overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-30 group-hover:opacity-20 transition-opacity duration-500`}></div>
-                  <div className="relative z-10 text-center">
-                    <div className="text-6xl mb-4 opacity-50">👕</div>
-                    <p className="text-xl font-bold text-gray-700 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-                      Coming Soon
-                    </p>
-                  </div>
-                  <div className="absolute top-3 right-3 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-lg">✨</span>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-slate-600 group-hover:bg-clip-text transition-all duration-300">{product.name} T-Shirt</h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">Comfortable, sustainable, and designed for peace</p>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-2xl font-bold bg-gradient-to-r from-sky-600 to-slate-600 bg-clip-text text-transparent">$29.99</span>
-                    <button className="px-4 py-2 bg-gradient-to-r from-sky-400 to-slate-400 text-white rounded-full font-medium hover:from-sky-500 hover:to-slate-500 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg text-xs whitespace-nowrap cursor-pointer">
-                      Add to Cart
-                    </button>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Calm Pick 1: Weighted Cuddle Pillow */}
+            <a
+              href="https://www.onequietmind.com/products/original-weighted-pillow?ref=justine_sinclair"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 fade-in-on-scroll border border-gray-100/70 cursor-pointer"
+            >
+              <div className="h-72 relative overflow-hidden">
+                <Image
+                  src="/PHOTO-2026-01-26-16-23-49.jpg"
+                  alt="Weighted Cuddle Pillow"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
+                <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/90 text-xs font-semibold text-slate-700 shadow-sm">
+                  Affiliate · Calm Tool
                 </div>
               </div>
-            ))}
+              <div className="p-6 flex flex-col gap-3">
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-slate-600 group-hover:bg-clip-text transition-all duration-300">
+                  Weighted Cuddle Pillow
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  A weighted hug you can actually hold. Helps calm the nervous system and create a sense of safety.
+                </p>
+                <div className="flex items-center justify-between pt-1">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
+                    <span className="text-sm">🌿</span> Nervous System Calm
+                  </span>
+                  <span className="text-sm font-semibold text-sky-600 flex items-center gap-1">
+                    View Calm Pick
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            {/* Calm Pick 2: YCZ Cologne */}
+            <a
+              href="https://www.yczfragrance.com/?source=aw&utm_source=awin&awc=121156_1769504294_4d042b0488b23085ea4616f976cd87d5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 fade-in-on-scroll border border-gray-100/70 cursor-pointer"
+            >
+              <div className="h-72 relative overflow-hidden">
+                <Image
+                  src="/PHOTO-2026-01-26-16-24-00.jpg"
+                  alt="YCZ Cologne"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/65 via-slate-900/10 to-transparent"></div>
+                <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/90 text-xs font-semibold text-slate-700 shadow-sm">
+                  Affiliate · Calm Ritual
+                </div>
+              </div>
+              <div className="p-6 flex flex-col gap-3">
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-slate-600 group-hover:bg-clip-text transition-all duration-300">
+                  YCZ Cologne
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  One spray, one breath, instant reset. A grounding scent ritual to mark the moment you choose calm.
+                </p>
+                <div className="flex items-center justify-between pt-1">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
+                    <span className="text-sm">💨</span> Scent Reset
+                  </span>
+                  <span className="text-sm font-semibold text-sky-600 flex items-center gap-1">
+                    View Calm Pick
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </section>

@@ -7,6 +7,148 @@ const blogContent: Record<string, {
   content: string[];
   category: string;
 }> = {
+  'hidden-price-pretty': {
+    title: 'The Hidden Price of "Pretty": How Social Media Is Reshaping Confidence, Childhood, and Emotional Health',
+    author: 'Justine Sinclair',
+    date: 'December 15, 2024',
+    category: 'Mental Health',
+    content: [
+      'Pretty has a price. And no one is talking about who pays it.',
+      'We are living in a time where beauty is no longer just admired—it is monetized.',
+      'Children are learning this before they even understand who they are.',
+      'Women feel it every time they open social media.',
+      'Comparison, pressure, and performance are quietly replacing real confidence.',
+      '## When Beauty Becomes a Currency',
+      'In today\'s world, being "pretty" often means:',
+      '- More attention',
+      '- More opportunities',
+      '- More money',
+      '- More validation',
+      'Social media has turned appearance into a form of social capital.',
+      'The better you look, the more you can sell—products, lifestyle, even yourself.',
+      'And while this reality is rarely said out loud, everyone feels it.',
+      '## What Children Are Learning Too Early',
+      'Children are growing up watching adults edit their faces, filter their lives, and tie worth to likes.',
+      'So children begin to believe:',
+      '- If I\'m not attractive, I\'m not valuable',
+      '- If I don\'t look perfect, I don\'t belong',
+      '- If others are prettier than me, I am less',
+      'This creates anxiety before identity.',
+      'Pressure before self-awareness.',
+      'Comparison before confidence.',
+      'And this is not a personal failure—it\'s a **systemic emotional problem**.',
+      '## The Dark Side of "Pretty Confidence"',
+      'Another truth we don\'t like to say:',
+      'Some people mistake attention for confidence.',
+      'When beauty is rewarded constantly, it can create **false superiority**, not self-worth.',
+      'This is where bullying begins.',
+      'Not because someone is truly confident—but because:',
+      '- Their worth feels fragile',
+      '- Their identity depends on staying "above" others',
+      '- Their confidence needs someone else to feel smaller',
+      'This is not confidence.',
+      'This is **fear dressed as beauty**.',
+      '## How This Fuels Anxiety and Emotional Pressure',
+      'When appearance becomes the measuring stick:',
+      '- Everyone feels behind',
+      '- Everyone feels watched',
+      '- Everyone feels judged',
+      'Even the "pretty" ones.',
+      'The pressure to stay perfect never ends.',
+      'The fear of losing attention never sleeps.',
+      'This is why anxiety is rising.',
+      'This is why calm feels rare.',
+      'This is why so many people feel exhausted just being seen.',
+      '## A Different Definition of Beauty Awareness',
+      'Beauty awareness is not about rejecting beauty.',
+      'It\'s about understanding its emotional impact.',
+      'True awareness asks:',
+      '- Who am I without validation?',
+      '- How do I treat others when I feel admired?',
+      '- What kind of world am I helping create?',
+      'When awareness grows, comparison weakens.',
+      'When calm returns, confidence stabilizes.',
+      '## Changing the World, One Person at a Time',
+      'We don\'t change the world by telling people to "stop caring."',
+      'We change it by teaching:',
+      '- Emotional intelligence',
+      '- Self-awareness',
+      '- Calm as strength',
+      'When one person chooses empathy over ego,',
+      'when one parent teaches presence over perfection,',
+      'when one woman models grounded confidence instead of superiority—',
+      'The emotional tone of the world shifts.',
+      'That is how real confidence survives.',
+      'That is how the future becomes safer.'
+    ]
+  },
+  'perfection-to-presence': {
+    title: 'From Perfection to Presence: How We Protect Confidence in a World Obsessed With Beauty',
+    author: 'Justine Sinclair',
+    date: 'December 15, 2024',
+    category: 'Mental Health',
+    content: [
+      'Confidence doesn\'t disappear overnight. It erodes quietly—through pressure, comparison, and fear.',
+      'We were never meant to live under constant evaluation.',
+      'Yet today, faces are scored, bodies are ranked, and worth is measured in engagement. This doesn\'t just affect adults—it shapes the emotional blueprint of the next generation.',
+      '## Why Perfection Is So Addictive',
+      'Perfection promises safety:',
+      '- "If I look good enough, I\'ll be accepted."',
+      '- "If I\'m admired, I won\'t be rejected."',
+      '- "If I\'m perfect, I won\'t be hurt."',
+      'But perfection is unstable.',
+      'It demands maintenance.',
+      'It breeds anxiety.',
+      'And it disconnects us from who we really are.',
+      '## The Confidence That Doesn\'t Break',
+      'Real confidence is not loud.',
+      'It doesn\'t dominate rooms or diminish others.',
+      'It feels like:',
+      '- Calm in your body',
+      '- Respect in your voice',
+      '- Presence without performance',
+      'This confidence doesn\'t come from mirrors.',
+      'It comes from emotional regulation.',
+      '## Why Calm Is the New Power',
+      'When the nervous system is constantly triggered:',
+      '- Confidence becomes reactive',
+      '- Emotions become overwhelming',
+      '- Comparison becomes automatic',
+      'Calm resets the system.',
+      'A regulated nervous system allows:',
+      '- Clear thinking',
+      '- Emotional resilience',
+      '- Compassion without self-abandonment',
+      'This is why calm people feel powerful.',
+      'They are not controlled by approval.',
+      '## Protecting Children—and Ourselves',
+      'Children don\'t need to be told they\'re perfect.',
+      'They need to feel safe being real.',
+      'That safety begins when adults:',
+      '- Stop equating beauty with value',
+      '- Model self-respect instead of self-criticism',
+      '- Choose empathy over comparison',
+      'Confidence survives where awareness lives.',
+      '## A New Way Forward',
+      'We need more beauty.',
+      'We need more wisdom around it.',
+      'Beauty without awareness creates pressure.',
+      'Beauty with awareness creates connection.',
+      'When we slow down, regulate, and reflect—even for a few minutes a day—we reclaim something essential:',
+      'Our emotional center.',
+      'And from that center, confidence grows naturally.',
+      '## One Person Is Enough to Start',
+      'You don\'t change the world by going viral.',
+      'You change it by being grounded.',
+      'One calmer nervous system.',
+      'One kinder interaction.',
+      'One less comparison.',
+      'One more moment of presence.',
+      'This is how emotional health spreads.',
+      'This is how confidence survives.',
+      'This is how the future becomes lighter.'
+    ]
+  },
   'gen-z-anxiety-guide': {
     title: 'Gen Z Guide to Understanding Anxiety Responses',
     author: 'Justine Sinclair',
@@ -292,11 +434,27 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           {/* Content */}
           <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl">
             <div className="prose prose-lg max-w-none">
-              {blog.content.map((paragraph, index) => (
-                <p key={index} className="text-gray-700 leading-relaxed mb-6 text-lg">
-                  {paragraph}
-                </p>
-              ))}
+              {blog.content.map((paragraph, index) => {
+                if (paragraph.startsWith('## ')) {
+                  return (
+                    <h2 key={index} className="text-3xl font-bold text-gray-800 mt-12 mb-6 first:mt-0">
+                      {paragraph.replace('## ', '')}
+                    </h2>
+                  );
+                }
+                if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+                  return (
+                    <p key={index} className="text-gray-700 leading-relaxed mb-6 text-lg font-bold">
+                      {paragraph.replace(/\*\*/g, '')}
+                    </p>
+                  );
+                }
+                return (
+                  <p key={index} className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    {paragraph}
+                  </p>
+                );
+              })}
             </div>
 
             {/* CTA */}
