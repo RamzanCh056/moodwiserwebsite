@@ -301,7 +301,7 @@ export default function Home() {
                 onClick={() => scrollToSection('products')}
                 className={`${getNavButtonClass('products')} cursor-pointer`}
               >
-                Products
+                Calm Pick
                 {activeSection === 'products' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-400 to-teal-400"></span>}
               </button>
               <Link
@@ -1403,7 +1403,7 @@ export default function Home() {
               <h3 className="text-white font-bold mb-6 text-xl">Quick Links</h3>
               <div className="flex flex-col space-y-3">
                 <a href="#home" className="text-gray-300 hover:text-sky-400 transition-all duration-300 text-base font-medium hover:translate-x-2 transform inline-block cursor-pointer">Home</a>
-                <a href="#products" className="text-gray-300 hover:text-slate-400 transition-all duration-300 text-base font-medium hover:translate-x-2 transform inline-block cursor-pointer">Products</a>
+                <a href="#products" className="text-gray-300 hover:text-slate-400 transition-all duration-300 text-base font-medium hover:translate-x-2 transform inline-block cursor-pointer">Calm Pick</a>
                 <a href="#blogs" className="text-gray-300 hover:text-purple-400 transition-all duration-300 text-base font-medium hover:translate-x-2 transform inline-block cursor-pointer">Blogs</a>
                 <a href="#about" className="text-gray-300 hover:text-sky-400 transition-all duration-300 text-base font-medium hover:translate-x-2 transform inline-block cursor-pointer">About Us</a>
                 <a href="#contact" className="text-gray-300 hover:text-slate-400 transition-all duration-300 text-base font-medium hover:translate-x-2 transform inline-block cursor-pointer">Contact Us</a>
