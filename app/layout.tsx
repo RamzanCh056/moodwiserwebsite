@@ -30,6 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Force favicon to use the teal Moodwiser logo from /public/moodwiser.jpeg */}
+        <link rel="icon" href="/moodwiser.jpeg" />
+        <link rel="apple-touch-icon" href="/moodwiser.jpeg" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
