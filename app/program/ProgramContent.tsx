@@ -48,9 +48,9 @@ export default function ProgramContent() {
                 </div>
             )}
 
-            {/* Navigation */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-100/50 transition-all duration-300">
-                <nav className="container mx-auto px-6 py-4">
+            {/* Navigation - unified with home top bar */}
+            <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl shadow-xl border-b border-gray-100/50 transition-all duration-500">
+                <nav className="container mx-auto px-6 py-5">
                     <div className="flex items-center justify-between">
                         <Link href="/" className="flex items-center gap-3 group cursor-pointer">
                             <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 relative">
@@ -68,14 +68,43 @@ export default function ProgramContent() {
                             </span>
                         </Link>
                         <div className="hidden md:flex items-center space-x-8">
-                            <Link href="/" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Home</Link>
-                            <Link href="/#products" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Products</Link>
-                            <Link href="/program" className="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-full transition-colors cursor-pointer">
-                                Program
+                            <Link
+                                href="/"
+                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                            >
+                                Home
                             </Link>
-                            <Link href="/#blogs" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Blogs</Link>
-                            <Link href="/#about" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">About Us</Link>
-                            <Link href="/#contact" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer">Contact Us</Link>
+                            <Link
+                                href="/#products"
+                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                            >
+                                Calm Pick
+                            </Link>
+                            <Link
+                                href="/program"
+                                className="transition-all duration-200 font-medium relative text-sky-500 font-semibold cursor-pointer"
+                            >
+                                Program
+                                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400" />
+                            </Link>
+                            <Link
+                                href="/#blogs"
+                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                            >
+                                Blogs
+                            </Link>
+                            <Link
+                                href="/#about"
+                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                            >
+                                About Us
+                            </Link>
+                            <Link
+                                href="/#contact"
+                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                            >
+                                Contact Us
+                            </Link>
                             {hasPaidAccess && (
                                 <Link
                                     href="/course"

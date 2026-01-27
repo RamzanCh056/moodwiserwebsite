@@ -393,17 +393,40 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 via-emerald-50 to-purple-50">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg shadow-md">
-        <nav className="container mx-auto px-6 py-4">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent">
-            Moodwiser
+      {/* Header - unified with main navigation */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl shadow-xl border-b border-gray-100/50">
+        <nav className="container mx-auto px-6 py-5 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 group cursor-pointer">
+            <span className="text-2xl font-bold bg-gradient-to-r from-sky-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent">
+              Moodwiser
+            </span>
           </Link>
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/" className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer">
+              Home
+            </Link>
+            <Link href="/#products" className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer">
+              Calm Pick
+            </Link>
+            <Link href="/program" className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer">
+              Program
+            </Link>
+            <Link href="/#blogs" className="transition-all duration-200 font-medium relative text-sky-500 font-semibold cursor-pointer">
+              Blogs
+              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400" />
+            </Link>
+            <Link href="/#about" className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer">
+              About Us
+            </Link>
+            <Link href="/#contact" className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer">
+              Contact Us
+            </Link>
+          </div>
         </nav>
       </header>
 
       {/* Blog Content */}
-      <article className="pt-24 pb-20 px-6">
+      <article className="pt-28 pb-20 px-6">
         <div className="container mx-auto max-w-4xl">
           {/* Back Button */}
           <Link 
