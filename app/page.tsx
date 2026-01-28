@@ -276,14 +276,14 @@ export default function Home() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group cursor-pointer">
               <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 relative">
-                <Image
+        <Image
                   src="/moodwiser.jpeg"
                   alt="Moodwiser Logo"
                   width={40}
                   height={40}
                   className="object-cover w-full h-full"
-                  priority
-                />
+          priority
+        />
               </div>
               <span className="text-lg font-bold bg-gradient-to-r from-sky-400 via-slate-400 to-purple-400 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
                 Moodwiser
@@ -426,15 +426,19 @@ export default function Home() {
 
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
                 <span className="block mb-1">
-                  Calm is not
+                  Emotions Are Wisdom.
                 </span>
                 <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
-                  weakness.
+                  Understand Your Anxiety Instead of Fighting It.
                 </span>
-              </h1>
+          </h1>
 
               <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
-                Your anxiety is not a failure — it&apos;s a signal. We help you understand it, calm your body, and feel safe again in a world that won&apos;t slow down.
+                Stop fighting anxiety. MoodWiser helps you understand emotions, calm your mind, and build emotional clarity in just 8 minutes a day.
+              </p>
+
+              <p className="text-sm md:text-base text-slate-500 leading-relaxed">
+                MoodWiser is a daily emotional wellness app designed to help you calm your nervous system, reduce overthinking, and respond with clarity—one moment at a time.
               </p>
 
               {/* App Store Buttons */}
@@ -1378,7 +1382,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-xl hover:scale-110 transition-transform duration-300 relative">
-                  <Image
+            <Image
                     src="/moodwiser.jpeg"
                     alt="Moodwiser Logo"
                     width={56}
