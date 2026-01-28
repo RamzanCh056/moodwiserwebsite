@@ -10,6 +10,7 @@ export default function ProgramContent() {
     const { user, hasPaidAccess } = useAuth();
     const [activeWeek, setActiveWeek] = useState(1);
     const [showDownloadModal, setShowDownloadModal] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
         <div className="min-h-screen bg-white font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900 relative">
@@ -113,15 +114,80 @@ export default function ProgramContent() {
                                 </Link>
                             )}
                         </div>
-                        {/* Mobile Menu Button Placeholder */}
+                        {/* Mobile Menu Button */}
                         <div className="md:hidden">
-                            <button className="text-slate-800 cursor-pointer p-2 hover:bg-slate-100 rounded-lg transition-colors">
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+                            <button
+                                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                                className="p-3 rounded-full bg-white/80 shadow-md border border-slate-200 text-gray-700 cursor-pointer active:scale-95 transition-all"
+                                aria-label="Open navigation"
+                            >
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
                             </button>
                         </div>
                     </div>
                 </nav>
             </header>
+
+            {/* Mobile navigation drawer */}
+            {isMobileMenuOpen && (
+                <div className="md:hidden fixed top-[72px] left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-lg">
+                    <nav className="px-6 py-4 space-y-2">
+                        <Link
+                            href="/"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block w-full px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            href="/#products"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block w-full px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
+                        >
+                            Calm Pick
+                        </Link>
+                        <Link
+                            href="/program"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block w-full px-4 py-2 rounded-xl text-slate-800 font-semibold bg-slate-50 hover:bg-slate-100 cursor-pointer"
+                        >
+                            Program
+                        </Link>
+                        <Link
+                            href="/#blogs"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block w-full px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
+                        >
+                            Blogs
+                        </Link>
+                        <Link
+                            href="/#about"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block w-full px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
+                        >
+                            About Us
+                        </Link>
+                        <Link
+                            href="/#contact"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block w-full px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50 cursor-pointer"
+                        >
+                            Contact Us
+                        </Link>
+                        {hasPaidAccess && (
+                            <Link
+                                href="/course"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="block w-full px-4 py-2 rounded-xl text-emerald-700 font-semibold bg-emerald-50 hover:bg-emerald-100 cursor-pointer"
+                            >
+                                🎓 Access Course
+                            </Link>
+                        )}
+                    </nav>
+                </div>
+            )}
 
             {/* Access Banner for Paid Users */}
             {hasPaidAccess && (
@@ -448,18 +514,18 @@ export default function ProgramContent() {
                                         ))}
                                     </div>
                                     {!hasPaidAccess && (
-                                        <div className="mt-8 p-8 bg-gradient-to-br from-emerald-50 via-sky-50 to-emerald-50 rounded-3xl border-2 border-emerald-200 shadow-xl text-center relative overflow-hidden">
+                                        <div className="mt-6 md:mt-8 p-6 md:p-8 max-w-sm mx-auto bg-gradient-to-br from-emerald-50 via-sky-50 to-emerald-50 rounded-[2rem] border-2 border-emerald-200 shadow-xl text-center relative overflow-hidden">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-200/30 rounded-full blur-3xl"></div>
                                             <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-100/30 rounded-full blur-2xl"></div>
                                             <div className="relative z-10">
-                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
+                                                <div className="w-14 h-14 mx-auto mb-3 md:mb-4 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
                                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                                     </svg>
                                                 </div>
-                                                <h3 className="text-2xl font-bold text-slate-800 mb-2">Unlock All 21 Days</h3>
-                                                <p className="text-slate-600 mb-2">Get lifetime access to the complete program</p>
-                                                <div className="flex items-center justify-center gap-3 mb-6 text-sm text-slate-500">
+                                                <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-1 md:mb-2">Unlock All 21 Days</h3>
+                                                <p className="text-sm md:text-base text-slate-600 mb-2">Get lifetime access to the complete program</p>
+                                                <div className="flex items-center justify-center gap-3 mb-4 md:mb-6 text-xs md:text-sm text-slate-500">
                                                     <span className="flex items-center gap-1">
                                                         <span>🇬🇧</span> English
                                                     </span>
@@ -470,7 +536,7 @@ export default function ProgramContent() {
                                                     <span>•</span>
                                                     <span>📄 PDF Guide</span>
                                                 </div>
-                                                <PaymentButton price="$27" className="mx-auto shadow-2xl" />
+                                                <PaymentButton price="$27" className="w-full max-w-xs mx-auto shadow-2xl mt-1" />
                                             </div>
                                         </div>
                                     )}
@@ -531,18 +597,18 @@ export default function ProgramContent() {
                                         ))}
                                     </div>
                                     {!hasPaidAccess && (
-                                        <div className="mt-8 p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
+                                        <div className="mt-6 md:mt-8 p-6 md:p-8 max-w-sm mx-auto bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-[2rem] border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/30 rounded-full blur-3xl"></div>
                                             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-200/30 rounded-full blur-2xl"></div>
                                             <div className="relative z-10">
-                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                                                <div className="w-14 h-14 mx-auto mb-3 md:mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
                                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                                     </svg>
                                                 </div>
-                                                <h3 className="text-2xl font-bold text-slate-800 mb-2">Unlock All 21 Days</h3>
-                                                <p className="text-slate-600 mb-2">Get lifetime access to the complete program</p>
-                                                <div className="flex items-center justify-center gap-3 mb-6 text-sm text-slate-500">
+                                                <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-1 md:mb-2">Unlock All 21 Days</h3>
+                                                <p className="text-sm md:text-base text-slate-600 mb-2">Get lifetime access to the complete program</p>
+                                                <div className="flex items-center justify-center gap-3 mb-4 md:mb-6 text-xs md:text-sm text-slate-500">
                                                     <span className="flex items-center gap-1">
                                                         <span>🇬🇧</span> English
                                                     </span>
@@ -553,7 +619,7 @@ export default function ProgramContent() {
                                                     <span>•</span>
                                                     <span>📄 PDF Guide</span>
                                                 </div>
-                                                <PaymentButton price="$27" className="mx-auto shadow-2xl" />
+                                                <PaymentButton price="$27" className="w-full max-w-xs mx-auto shadow-2xl mt-1" />
                                             </div>
                                         </div>
                                     )}
@@ -614,18 +680,18 @@ export default function ProgramContent() {
                                         ))}
                                     </div>
                                     {!hasPaidAccess && (
-                                        <div className="mt-8 p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
+                                        <div className="mt-6 md:mt-8 p-6 md:p-8 max-w-sm mx-auto bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-[2rem] border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
                                             <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/30 rounded-full blur-3xl"></div>
                                             <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-200/30 rounded-full blur-2xl"></div>
                                             <div className="relative z-10">
-                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                                                <div className="w-14 h-14 mx-auto mb-3 md:mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
                                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                                     </svg>
                                                 </div>
-                                                <h3 className="text-2xl font-bold text-slate-800 mb-2">Unlock All 21 Days</h3>
-                                                <p className="text-slate-600 mb-2">Get lifetime access to the complete program</p>
-                                                <div className="flex items-center justify-center gap-3 mb-6 text-sm text-slate-500">
+                                                <h3 className="text-xl md:text-2xl font-bold text-slate-800 mb-1 md:mb-2">Unlock All 21 Days</h3>
+                                                <p className="text-sm md:text-base text-slate-600 mb-2">Get lifetime access to the complete program</p>
+                                                <div className="flex items-center justify-center gap-3 mb-4 md:mb-6 text-xs md:text-sm text-slate-500">
                                                     <span className="flex items-center gap-1">
                                                         <span>🇬🇧</span> English
                                                     </span>
@@ -636,7 +702,7 @@ export default function ProgramContent() {
                                                     <span>•</span>
                                                     <span>📄 PDF Guide</span>
                                                 </div>
-                                                <PaymentButton price="$27" className="mx-auto shadow-2xl" />
+                                                <PaymentButton price="$27" className="w-full max-w-xs mx-auto shadow-2xl mt-1" />
                                             </div>
                                         </div>
                                     )}

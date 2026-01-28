@@ -506,11 +506,11 @@ export default function Home() {
                 </span>
           </h1>
 
-              <p className="text-[13px] sm:text-sm md:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-[13px] sm:text-sm md:text-base text-slate-800 leading-relaxed font-semibold">
                 Stop fighting anxiety. MoodWiser helps you understand emotions, calm your mind, and build emotional clarity in just 8 minutes a day.
               </p>
 
-              <p className="text-[12px] sm:text-[13px] md:text-sm text-slate-700 leading-relaxed font-medium">
+              <p className="text-[12px] sm:text-[13px] md:text-sm text-slate-900 leading-relaxed font-semibold">
                 MoodWiser is a daily emotional wellness app designed to help you calm your nervous system, reduce overthinking, and respond with clarity—one moment at a time.
               </p>
 
@@ -570,38 +570,39 @@ export default function Home() {
       </section>
 
       {/* Experience MoodWiser Section - Dark Premium Theme */}
-      <section className="py-32 px-6 bg-gradient-to-b from-sky-950 via-slate-950 to-slate-900 relative overflow-hidden text-white">
+      <section className="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-sky-950 via-slate-950 to-slate-900 relative overflow-hidden text-white">
         {/* Decorative Background Elements */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="text-center mb-24 fade-in-on-scroll">
-            <h2 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-sky-200 to-teal-200">
+          <div className="text-center mb-16 md:mb-24 fade-in-on-scroll">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 md:mb-8 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-sky-200 to-teal-200">
               Experience MoodWiser
             </h2>
 
             {/* Emotional Story / Manifesto */}
-            <div className="max-w-3xl mx-auto space-y-8 font-light leading-relaxed text-slate-300 text-base md:text-base">
-              <p>
+            <div className="max-w-3xl mx-auto space-y-4 md:space-y-8 font-light leading-relaxed text-slate-200 text-sm md:text-base bg-white/5 md:bg-transparent border border-white/10 md:border-none rounded-3xl px-5 py-6 md:px-0 md:py-0 shadow-lg md:shadow-none">
+              <p className="text-base md:text-lg">
                 We live in a world that never seems to slow&nbsp;down.
               </p>
-              <p>
+              <p className="text-sm md:text-base">
                 Every scroll. Every notification.
               </p>
-              <p>
+              <p className="text-sm md:text-base">
                 Every moment is pulling at your attention.
               </p>
-              <p className="font-medium text-white border-l-4 border-indigo-500 pl-6 my-8">
+              {/* Stronger lines without any decorative left bar */}
+              <p className="font-semibold text-white my-4 md:my-8">
                 MoodWiser was created for those moments when you pause —
               </p>
-              <p className="font-medium text-white border-l-4 border-indigo-500 pl-6">
+              <p className="font-semibold text-white">
                 to breathe, notice, and understand what you're actually feeling.
               </p>
-              <p>
+              <p className="text-sm md:text-base">
                 Return to calm—on your own terms.
               </p>
-              <p className="block mt-4 text-sky-200 italic font-normal">
+              <p className="block mt-3 md:mt-4 text-sky-200 italic font-normal text-xs md:text-sm">
                 No pressure. No judgment. Just clarity.
               </p>
             </div>
@@ -609,7 +610,7 @@ export default function Home() {
 
           <div className="space-y-32">
             {/* Feature 1: Track Your Mood */}
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center bg-white/5 md:bg-transparent border border-white/10 md:border-none rounded-3xl md:rounded-none p-6 md:p-0">
               <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
                 {/* Shrink primary dashboard phone mockup to match others */}
                 <div className="relative bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-4 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[220px] w-full">
@@ -654,7 +655,7 @@ export default function Home() {
             </div>
 
             {/* Feature 2: View Insights & Activities */}
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center bg-white/5 md:bg-transparent border border-white/10 md:border-none rounded-3xl md:rounded-none p-6 md:p-0">
               <div className="text-left space-y-8 fade-in-on-scroll">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-teal-500/20 rounded-full border border-teal-500/30 text-teal-200 text-sm font-bold uppercase tracking-wider">
                   <span>🧘</span>
@@ -696,7 +697,7 @@ export default function Home() {
             </div>
 
             {/* Feature 3: Library */}
-            <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center bg-white/5 md:bg-transparent border border-white/10 md:border-none rounded-3xl md:rounded-none p-6 md:p-0">
               <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
                 {/* Shrink library phone mockup ~2x */}
                 <div className="relative bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-4 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[220px] w-full">
@@ -1229,36 +1230,36 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-16">
             {/* Mission Card */}
-            <div className="bg-white rounded-3xl p-12 shadow-2xl fade-in-on-scroll border border-gray-100/50 hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group">
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl fade-in-on-scroll border border-gray-100/50 hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-sky-200 to-slate-200 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-sky-400 to-slate-400 flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+              <div className="relative z-10 text-center md:text-left">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-sky-400 to-slate-400 flex items-center justify-center mb-6 md:mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 mx-auto md:mx-0">
                   <span className="text-4xl">🎯</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-slate-600 group-hover:bg-clip-text transition-all duration-300">Our Mission</h3>
-                <p className="text-gray-600 leading-relaxed mb-4 text-lg">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-sky-600 group-hover:to-slate-600 group-hover:bg-clip-text transition-all duration-300">Our Mission</h3>
+                <p className="text-gray-600 leading-relaxed mb-3 md:mb-4 text-base md:text-lg">
                   At Moodwiser, we believe in the power of mindfulness and emotional wellness. Our mission is to help you find balance, peace, and happiness in your daily life through innovative technology and thoughtful design.
                 </p>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                   We understand that mental health is not a destination, but a journey. That's why we've created tools that grow with you, adapt to your needs, and support you every step of the way.
                 </p>
               </div>
             </div>
 
             {/* Vision Card */}
-            <div className="bg-white rounded-3xl p-12 shadow-2xl fade-in-on-scroll border border-gray-100/50 hover:shadow-glow-purple transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group">
+            <div className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl fade-in-on-scroll border border-gray-100/50 hover:shadow-glow-purple transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-emerald-100 to-teal-200 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+              <div className="relative z-10 text-center md:text-left">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center mb-6 md:mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 mx-auto md:mx-0">
                   <span className="text-4xl">✨</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-500 group-hover:bg-clip-text transition-all duration-300">Our Vision</h3>
-                <p className="text-gray-600 leading-relaxed mb-4 text-lg">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 md:mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-500 group-hover:bg-clip-text transition-all duration-300">Our Vision</h3>
+                <p className="text-gray-600 leading-relaxed mb-3 md:mb-4 text-base md:text-lg">
                   We envision a world where emotional wellness is accessible to everyone, where technology serves humanity's deepest needs, and where people feel empowered to understand and manage their mental health.
                 </p>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <p className="text-gray-600 leading-relaxed text-base md:text-lg">
                   Through cutting-edge app development and serene, nature-inspired products, we're building a holistic ecosystem that supports your well-being from every angle.
                 </p>
               </div>
@@ -1266,56 +1267,56 @@ export default function Home() {
           </div>
 
           {/* Main Content */}
-          <div className="bg-white rounded-3xl p-12 md:p-20 shadow-2xl fade-in-on-scroll border border-gray-100/50 relative overflow-hidden">
+          <div className="bg-white rounded-3xl p-8 md:p-20 shadow-2xl fade-in-on-scroll border border-gray-100/50 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-sky-200 to-slate-200 rounded-full blur-3xl opacity-10"></div>
             <div className="relative z-10">
               <div className="max-w-4xl mx-auto">
-                <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">What Makes Us Different</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 md:mb-8 text-center">What Makes Us Different</h3>
 
-                <div className="space-y-8">
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-sky-100 to-slate-100 flex items-center justify-center">
+                <div className="space-y-6 md:space-y-8">
+                  <div className="flex gap-4 md:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-sky-100 to-slate-100 flex items-center justify-center">
                       <span className="text-xl">🧠</span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800 mb-2">Science-Backed Approach</h4>
-                      <p className="text-gray-600 leading-relaxed">
+                      <h4 className="text-lg md:text-xl font-bold text-gray-800 mb-1 md:mb-2">Science-Backed Approach</h4>
+                      <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                         Every feature in Moodwiser is built on research from neuroscience, psychology, and behavioral science. We don't just track your mood—we help you understand the patterns and triggers that affect your emotional well-being.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
+                  <div className="flex gap-4 md:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
                       <span className="text-xl">💚</span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800 mb-2">Compassionate Design</h4>
-                      <p className="text-gray-600 leading-relaxed">
+                      <h4 className="text-lg md:text-xl font-bold text-gray-800 mb-1 md:mb-2">Compassionate Design</h4>
+                      <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                         We know that dealing with anxiety and stress can be overwhelming. That's why every interaction with Moodwiser is designed to be gentle, supportive, and non-judgmental. You're not broken—you're human, and we're here to help.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-slate-100 to-teal-100 flex items-center justify-center">
+                  <div className="flex gap-4 md:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-slate-100 to-teal-100 flex items-center justify-center">
                       <span className="text-xl">🌱</span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800 mb-2">Holistic Wellness</h4>
-                      <p className="text-gray-600 leading-relaxed">
+                      <h4 className="text-lg md:text-xl font-bold text-gray-800 mb-1 md:mb-2">Holistic Wellness</h4>
+                      <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                         We combine cutting-edge app development with serene, nature-inspired products to create a complete wellness ecosystem. From daily mood tracking to calming products, every element is designed with your mental health and tranquility in mind.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
+                  <div className="flex gap-4 md:gap-6">
+                    <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
                       <span className="text-xl">🤝</span>
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-800 mb-2">Community & Support</h4>
-                      <p className="text-gray-600 leading-relaxed">
+                      <h4 className="text-lg md:text-xl font-bold text-gray-800 mb-1 md:mb-2">Community & Support</h4>
+                      <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                         You're not alone on this journey. Moodwiser connects you with a community of people who understand what you're going through. Our AI companion is always available to provide personalized support, guidance, and encouragement when you need it most.
                       </p>
                     </div>
