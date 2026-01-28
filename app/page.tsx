@@ -132,19 +132,18 @@ export default function Home() {
     }
   };
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const getNavButtonClass = (section: string) => {
-    const baseClass = "transition-all duration-200 font-medium relative";
+    const baseClass =
+      "transition-all duration-200 font-medium relative px-4 py-2 rounded-full";
     const isActive = activeSection === section;
 
     if (isActive) {
-      if (section === 'home') return `${baseClass} text-sky-500 font-semibold`;
-      if (section === 'products') return `${baseClass} text-slate-500 font-semibold`;
-      if (section === 'blogs') return `${baseClass} text-purple-500 font-semibold`;
-      if (section === 'about') return `${baseClass} text-purple-500 font-semibold`;
-      if (section === 'contact') return `${baseClass} text-sky-500 font-semibold`;
+      return `${baseClass} bg-white text-slate-900 shadow-sm`;
     }
 
-    return `${baseClass} text-gray-700 hover:text-sky-500`;
+    return `${baseClass} text-gray-700 hover:text-slate-900 hover:bg-white/80 hover:shadow-sm`;
   };
 
   const blogs = [
@@ -268,7 +267,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-slate-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-b from-sky-50 via-slate-50 to-emerald-50">
       {/* Header Navigation */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-xl border-b border-gray-100/50' : 'bg-transparent'
         }`}>
@@ -285,7 +284,7 @@ export default function Home() {
           priority
         />
               </div>
-              <span className="text-lg font-bold bg-gradient-to-r from-sky-400 via-slate-400 to-purple-400 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
+              <span className="text-lg font-bold bg-gradient-to-r from-sky-400 via-slate-400 to-emerald-500 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
                 Moodwiser
               </span>
             </Link>
@@ -295,18 +294,16 @@ export default function Home() {
                 className={`${getNavButtonClass('home')} cursor-pointer`}
               >
                 Home
-                {activeSection === 'home' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-400 to-slate-400"></span>}
               </button>
               <button
                 onClick={() => scrollToSection('products')}
                 className={`${getNavButtonClass('products')} cursor-pointer`}
               >
                 Calm Pick
-                {activeSection === 'products' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-slate-400 to-teal-400"></span>}
               </button>
               <Link
                 href="/program"
-                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                className="transition-all duration-200 font-medium relative px-4 py-2 rounded-full text-gray-700 hover:text-slate-900 hover:bg-white/80 hover:shadow-sm cursor-pointer"
               >
                 Program
               </Link>
@@ -315,21 +312,18 @@ export default function Home() {
                 className={`${getNavButtonClass('blogs')} cursor-pointer`}
               >
                 Blogs
-                {activeSection === 'blogs' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400"></span>}
               </button>
               <button
                 onClick={() => scrollToSection('about')}
                 className={`${getNavButtonClass('about')} cursor-pointer`}
               >
                 About Us
-                {activeSection === 'about' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400"></span>}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
                 className={`${getNavButtonClass('contact')} cursor-pointer`}
               >
                 Contact Us
-                {activeSection === 'contact' && <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-sky-400 to-cyan-400"></span>}
               </button>
               
               {/* User Menu */}
@@ -392,28 +386,107 @@ export default function Home() {
               )}
             </div>
             <div className="md:hidden">
-              <button className="text-gray-700 cursor-pointer">☰</button>
+              <button
+                onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+                className="p-3 rounded-full bg-white/80 shadow-md border border-slate-200 text-gray-700 cursor-pointer active:scale-95 transition-all"
+                aria-label="Open navigation"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
         </nav>
       </header>
 
-      {/* Hero Section with Beautiful Background Image */}
-      {/* Hero Section with Split Layout & Dashboard Mockup */}
-      <section id="home" className="pt-20 pb-20 px-6 relative overflow-hidden min-h-[80vh] flex items-start bg-white">
-
-        {/* Premium Background Gradients */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[-20%] right-[-10%] w-[1000px] h-[1000px] bg-gradient-to-br from-indigo-100/40 via-purple-100/40 to-sky-100/40 rounded-full blur-[100px] animate-blob"></div>
-          <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-gradient-to-tr from-sky-100/40 via-teal-100/40 to-emerald-100/40 rounded-full blur-[100px] animate-blob animation-delay-2000"></div>
-          <div className="absolute top-[40%] left-[20%] w-[400px] h-[400px] bg-pink-100/30 rounded-full blur-[80px] animate-blob animation-delay-4000"></div>
+      {/* Mobile navigation drawer */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed top-[72px] left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-b border-slate-200 shadow-lg">
+          <nav className="px-6 py-4 space-y-2">
+            <button
+              onClick={() => {
+                scrollToSection('home');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('products');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50"
+            >
+              Calm Pick
+            </button>
+            <Link
+              href="/program"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50"
+            >
+              Program
+            </Link>
+            <button
+              onClick={() => {
+                scrollToSection('blogs');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50"
+            >
+              Blogs
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('about');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection('contact');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-4 py-2 rounded-xl text-slate-800 font-medium hover:bg-slate-50"
+            >
+              Contact Us
+            </button>
+          </nav>
         </div>
+      )}
 
-        <div className="container mx-auto max-w-7xl relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+      {/* Hero Section */}
+      <section
+        id="home"
+        className="pt-24 pb-20 px-6 relative overflow-hidden min-h-[80vh] flex items-center bg-cover bg-center"
+        style={{
+          backgroundImage:
+            'url("https://media.istockphoto.com/id/509111694/photo/sea-to-sky-highway-or-highway-99.jpg?b=1&s=1024x1024&w=0&k=20&c=PYruydjDzULoHogYevacKxaFTdpcw8c0dsrCTz1uwRU=")',
+        }}
+      >
+        {/* Soft overlay: keep text readable but let the lake/mountains show strongly */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent"></div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="grid lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)] gap-16 items-center">
 
             {/* Left Content */}
-            <div className="text-center lg:text-left space-y-6 fade-in max-w-xl">
+            <div className="text-center lg:text-left space-y-5 fade-in max-w-xl">
               <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-sm border border-white/70">
                 <span className="flex h-2.5 w-2.5 relative">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
@@ -424,20 +497,20 @@ export default function Home() {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
-                <span className="block mb-1">
+              <h1 className="font-extrabold leading-[1.08] tracking-tight text-slate-900">
+                <span className="block mb-1 text-[22px] sm:text-[26px] md:text-[30px] lg:text-[34px]">
                   Emotions Are Wisdom.
                 </span>
-                <span className="block bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent">
+                <span className="block text-[26px] sm:text-[32px] md:text-[36px] lg:text-[42px] bg-gradient-to-r from-sky-600 via-teal-600 to-emerald-600 bg-clip-text text-transparent">
                   Understand Your Anxiety Instead of Fighting It.
                 </span>
           </h1>
 
-              <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
+              <p className="text-[13px] sm:text-sm md:text-base text-slate-600 leading-relaxed font-normal">
                 Stop fighting anxiety. MoodWiser helps you understand emotions, calm your mind, and build emotional clarity in just 8 minutes a day.
               </p>
 
-              <p className="text-sm md:text-base text-slate-500 leading-relaxed">
+              <p className="text-[12px] sm:text-[13px] md:text-sm text-slate-700 leading-relaxed font-medium">
                 MoodWiser is a daily emotional wellness app designed to help you calm your nervous system, reduce overthinking, and respond with clarity—one moment at a time.
               </p>
 
@@ -445,35 +518,35 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 fade-in-delay lg:ml-0 pt-4">
                 <Link
                   href="/program"
-                  className="group relative flex items-center gap-3.5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-7 py-4.5 rounded-2xl hover:from-slate-800 hover:via-slate-700 hover:to-slate-800 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-slate-900/30 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[240px] h-[76px] justify-center cursor-pointer overflow-hidden border border-slate-700/50"
+                  className="group relative flex items-center gap-3.5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-7 py-4.5 rounded-2xl hover:from-slate-800 hover:via-slate-700 hover:to-slate-800 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-slate-900/30 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[260px] h-[76px] justify-center cursor-pointer overflow-hidden border border-slate-700/50"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-500"></div>
                   <span className="text-2xl relative z-10 group-hover:scale-110 transition-transform duration-300">🎓</span>
                   <div className="text-left relative z-10">
-                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-300/90 leading-tight mb-0.5">Start Journey</div>
-                    <div className="text-[15px] font-bold leading-tight text-white">21-Day Program</div>
+                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-300/90 leading-tight mb-0.5 whitespace-nowrap">Start Journey</div>
+                    <div className="text-[15px] font-bold leading-tight text-white whitespace-nowrap">21-Day Program</div>
                   </div>
                 </Link>
                 <a
                   href="https://apps.apple.com/pk/app/moodwiser/id6755422630"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center gap-3.5 bg-white text-slate-900 border-2 border-slate-200/80 px-7 py-4.5 rounded-2xl hover:border-slate-300 hover:bg-slate-50/80 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[240px] h-[76px] justify-center cursor-pointer overflow-hidden"
+                  className="group relative flex items-center gap-3.5 bg-white text-slate-900 border-2 border-slate-200/80 px-7 py-4.5 rounded-2xl hover:border-slate-300 hover:bg-slate-50/80 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[260px] h-[76px] justify-center cursor-pointer overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg className="w-7 h-7 text-black relative z-10 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
                   </svg>
                   <div className="text-left relative z-10">
-                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-500 leading-tight mb-0.5">Download on</div>
-                    <div className="text-[15px] font-bold leading-tight text-slate-900">App Store</div>
+                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-500 leading-tight mb-0.5 whitespace-nowrap">Download on</div>
+                    <div className="text-[15px] font-bold leading-tight text-slate-900 whitespace-nowrap">App Store</div>
                   </div>
                 </a>
                 <a
                   href="https://play.google.com/store/apps/details?id=com.moodwiser.app"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center gap-3.5 bg-white text-slate-900 border-2 border-slate-200/80 px-7 py-4.5 rounded-2xl hover:border-slate-300 hover:bg-slate-50/80 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[240px] h-[76px] justify-center cursor-pointer overflow-hidden"
+                  className="group relative flex items-center gap-3.5 bg-white text-slate-900 border-2 border-slate-200/80 px-7 py-4.5 rounded-2xl hover:border-slate-300 hover:bg-slate-50/80 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-0.5 active:translate-y-0 w-full sm:w-[260px] h-[76px] justify-center cursor-pointer overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-100/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg className="w-7 h-7 relative z-10 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none">
@@ -483,60 +556,21 @@ export default function Home() {
                     <path d="M16.81 8.88L14.54 11.15L6.05 2.66L16.81 8.88Z" fill="#EA4335" />
                   </svg>
                   <div className="text-left relative z-10">
-                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-500 leading-tight mb-0.5">Get it on</div>
-                    <div className="text-[15px] font-bold leading-tight text-slate-900">Google Play</div>
+                    <div className="text-[10px] uppercase tracking-[0.08em] font-bold text-slate-500 leading-tight mb-0.5 whitespace-nowrap">Get it on</div>
+                    <div className="text-[15px] font-bold leading-tight text-slate-900 whitespace-nowrap">Google Play</div>
                   </div>
                 </a>
               </div>
             </div>
 
-            {/* Right - Hero Image (Dashboard Mockup) */}
-            <div className="relative flex justify-center lg:justify-end slide-up">
-              <div className="relative w-full max-w-[420px]">
-                {/* Glow Effect */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-sky-200/50 via-purple-200/50 to-pink-200/50 rounded-full blur-[80px] animate-pulse"></div>
-
-                {/* Phone Frame */}
-                <div className="relative bg-white rounded-[3.5rem] p-3 shadow-2xl transform rotate-[-3deg] hover:rotate-0 transition-transform duration-700 border-[8px] border-white ring-1 ring-gray-100/50">
-                  <div className="relative rounded-[3rem] overflow-hidden bg-gray-50 aspect-[9/19] shadow-inner">
-                    <Image
-                      src="/app-dashboard-hd.png"
-                      alt="MoodWiser Dashboard"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    {/* CSS Patch: Fix "MoodFit" to "MoodWiser" */}
-                    <div className="absolute top-[7.8%] left-[7.5%] bg-white px-2 py-1 z-10 rounded-md shadow-sm">
-                      <span className="text-[#3B82F6] font-bold text-xl tracking-tight">MoodWiser</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating Elements (Decorations) */}
-                <div className="absolute top-10 -right-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] animate-float border border-white/50">
-                  <span className="text-4xl">🌿</span>
-                </div>
-                <div className="absolute top-1/2 -left-16 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] animate-float border border-white/50">
-                  <span className="text-4xl">✨</span>
-                </div>
-                <div className="absolute -bottom-4 right-8 bg-white/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] animate-float animation-delay-4000 border border-white/50">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl">💚</span>
-                    <div>
-                      <div className="text-base font-bold text-slate-800">95% Feel Better</div>
-                      <div className="text-xs text-slate-500">In just 21 days</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Right column left intentionally light/empty so background image breathes */}
+            <div className="hidden lg:block"></div>
           </div>
         </div>
       </section>
 
       {/* Experience MoodWiser Section - Dark Premium Theme */}
-      <section className="py-32 px-6 bg-slate-900 relative overflow-hidden text-white">
+      <section className="py-32 px-6 bg-gradient-to-b from-sky-950 via-slate-950 to-slate-900 relative overflow-hidden text-white">
         {/* Decorative Background Elements */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -548,9 +582,9 @@ export default function Home() {
             </h2>
 
             {/* Emotional Story / Manifesto */}
-            <div className="max-w-3xl mx-auto space-y-8 font-light leading-relaxed text-slate-300 text-lg md:text-2xl">
+            <div className="max-w-3xl mx-auto space-y-8 font-light leading-relaxed text-slate-300 text-base md:text-base">
               <p>
-                We live in a world that never seems to slow down.
+                We live in a world that never seems to slow&nbsp;down.
               </p>
               <p>
                 Every scroll. Every notification.
@@ -577,8 +611,9 @@ export default function Home() {
             {/* Feature 1: Track Your Mood */}
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
-                <div className="relative bg-white/5 backdrop-blur-xl rounded-[3rem] p-6 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[360px] w-full">
-                  <div className="relative h-[600px] w-full bg-slate-950 rounded-[2.5rem] overflow-hidden border-[8px] border-slate-900 shadow-inner">
+                {/* Shrink primary dashboard phone mockup to match others */}
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-4 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[220px] w-full">
+                  <div className="relative h-[360px] w-full bg-slate-950 rounded-[2rem] overflow-hidden border-[6px] border-slate-900 shadow-inner">
                     <Image
                       src="/app-dashboard-hd.png"
                       alt="Mood Tracking Interface"
@@ -586,7 +621,7 @@ export default function Home() {
                       className="object-cover"
                     />
                     <div className="absolute top-[7.8%] left-[7.5%] bg-white px-2 py-1 z-10 rounded-sm">
-                      <span className="text-[#3B82F6] font-[600] text-[1.2rem] tracking-tight">MoodWiser</span>
+                      <span className="text-[#3B82F6] font-[600] text-[1rem] tracking-tight">MoodWiser</span>
                     </div>
                   </div>
                 </div>
@@ -598,7 +633,7 @@ export default function Home() {
                   <span>Insightful Tracking</span>
                 </div>
                 <h3 className="text-4xl md:text-5xl font-bold text-white">Track Your Mood</h3>
-                <p className="text-xl text-slate-300 leading-relaxed font-light">
+                <p className="text-base text-slate-300 leading-relaxed font-light">
                   Understand your emotional patterns with our intuitive mood tracker. Log your feelings, identify triggers, and see your progress over time with beautiful visualizations.
                 </p>
                 <ul className="space-y-4 pt-4">
@@ -607,7 +642,7 @@ export default function Home() {
                     'Identify triggers and patterns',
                     'Visualize your emotional journey'
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-lg text-slate-200">
+                    <li key={i} className="flex items-center gap-4 text-base text-slate-200">
                       <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center flex-shrink-0 text-indigo-300">
                         ✓
                       </div>
@@ -626,7 +661,7 @@ export default function Home() {
                   <span>Calming Tools</span>
                 </div>
                 <h3 className="text-4xl md:text-5xl font-bold text-white">Quick Activities</h3>
-                <p className="text-xl text-slate-300 leading-relaxed font-light">
+                <p className="text-base text-slate-300 leading-relaxed font-light">
                   Access a library of quick tools to calm your mind and body. From breathing exercises to relaxing games, find what works best for you in moments of stress.
                 </p>
                 <ul className="space-y-4 pt-4">
@@ -635,7 +670,7 @@ export default function Home() {
                     'Relaxing mini-games',
                     'Guided reflection and journaling'
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-lg text-slate-200">
+                    <li key={i} className="flex items-center gap-4 text-base text-slate-200">
                       <div className="w-8 h-8 rounded-full bg-teal-500/20 flex items-center justify-center flex-shrink-0 text-teal-300">
                         ✓
                       </div>
@@ -646,8 +681,9 @@ export default function Home() {
               </div>
 
               <div className="relative group perspective-1000 flex justify-center">
-                <div className="relative bg-white/5 backdrop-blur-xl rounded-[3rem] p-6 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[360px] w-full">
-                  <div className="relative h-[600px] w-full bg-slate-950 rounded-[2.5rem] overflow-hidden border-[8px] border-slate-900 shadow-inner">
+                {/* Shrink feature phone mockup ~2x */}
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-4 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[220px] w-full">
+                  <div className="relative h-[360px] w-full bg-slate-950 rounded-[2rem] overflow-hidden border-[6px] border-slate-900 shadow-inner">
                     <Image
                       src="/mobile-activities.png"
                       alt="Activities Interface"
@@ -662,8 +698,9 @@ export default function Home() {
             {/* Feature 3: Library */}
             <div className="grid md:grid-cols-2 gap-16 items-center">
               <div className="order-2 md:order-1 relative group perspective-1000 flex justify-center">
-                <div className="relative bg-white/5 backdrop-blur-xl rounded-[3rem] p-6 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[360px] w-full">
-                  <div className="relative h-[600px] w-full bg-slate-950 rounded-[2.5rem] overflow-hidden border-[8px] border-slate-900 shadow-inner">
+                {/* Shrink library phone mockup ~2x */}
+                <div className="relative bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-4 border border-white/10 shadow-2xl transform transition-transform duration-500 group-hover:rotate-y-2 group-hover:scale-105 max-w-[220px] w-full">
+                  <div className="relative h-[360px] w-full bg-slate-950 rounded-[2rem] overflow-hidden border-[6px] border-slate-900 shadow-inner">
                     <Image
                       src="/mobile-library.png"
                       alt="Resource Library Interface"
@@ -680,7 +717,7 @@ export default function Home() {
                   <span>Knowledge Hub</span>
                 </div>
                 <h3 className="text-4xl md:text-5xl font-bold text-white">Growth Library</h3>
-                <p className="text-xl text-slate-300 leading-relaxed font-light">
+                <p className="text-base text-slate-300 leading-relaxed font-light">
                   Explore our comprehensive collection of guides, workbooks, and resources designed to support your emotional journey and personal growth.
                 </p>
                 <ul className="space-y-4 pt-4">
@@ -689,7 +726,7 @@ export default function Home() {
                     'Interactive workbooks for self-reflection',
                     'Daily learning and growth paths'
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-lg text-slate-200">
+                    <li key={i} className="flex items-center gap-4 text-base text-slate-200">
                       <div className="w-8 h-8 rounded-full bg-sky-500/20 flex items-center justify-center flex-shrink-0 text-sky-300">
                         ✓
                       </div>
@@ -702,17 +739,22 @@ export default function Home() {
           </div>
 
           {/* New Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mt-32">
+          <div className="grid md:grid-cols-3 gap-6 mt-20">
             {[
-              { title: 'AI Stress Companion', icon: '🤖', desc: 'Chat with our empathetic AI to instantly release stress and find clarity.', color: 'from-indigo-500/20 to-purple-500/20' },
+              { title: 'AI Stress Companion', icon: '🤖', desc: 'Chat with our empathetic AI to instantly release stress and find clarity.', color: 'from-indigo-500/20 to-emerald-500/20' },
               { title: 'Calm Points', icon: '💎', desc: 'Earn rewards for taking care of your mental health.', color: 'from-sky-500/20 to-teal-500/20' },
               { title: 'Daily Streak', icon: '🔥', desc: 'Build lasting habits with our motivating streak system.', color: 'from-orange-500/20 to-red-500/20' }
             ].map((feature, idx) => (
-              <div key={idx} className={`bg-white/5 backdrop-blur-md rounded-3xl p-8 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden`}>
+              <div
+                key={idx}
+                className={`bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 group relative overflow-hidden max-w-[320px] mx-auto`}
+              >
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 <div className="relative z-10">
-                  <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300 bg-white/10 w-20 h-20 rounded-2xl flex items-center justify-center">{feature.icon}</div>
-                  <h4 className="text-2xl font-bold mb-3 text-white">{feature.title}</h4>
+                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 bg-white/10 w-14 h-14 rounded-2xl flex items-center justify-center">
+                    {feature.icon}
+                  </div>
+                  <h4 className="text-lg font-semibold mb-2 text-white">{feature.title}</h4>
                   <p className="text-slate-300 text-base leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
@@ -723,10 +765,10 @@ export default function Home() {
       </section >
 
       {/* Ready to Start Journey Section - Comparison Layout */}
-      <section className="py-12 px-6 bg-slate-50 relative overflow-hidden">
+      <section className="py-8 px-4 bg-slate-50 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-100/40 rounded-full blur-[120px] -z-10"></div>
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-100/40 rounded-full blur-[100px] -z-10"></div>
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-emerald-100/40 rounded-full blur-[100px] -z-10"></div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-8">
@@ -738,21 +780,21 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 items-start">
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {/* Option 1: The Program - Premium Highlight */}
-            <div className="bg-white rounded-3xl p-8 border border-indigo-100 shadow-xl shadow-indigo-100/50 flex flex-col relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-white rounded-2xl p-4 border border-indigo-100 shadow-md shadow-indigo-100/60 flex flex-col relative overflow-hidden group hover:-translate-y-0.5 transition-all duration-300">
               <div className="absolute top-0 right-0 bg-gradient-to-l from-indigo-600 to-purple-600 text-white text-[10px] font-semibold px-3 py-1.5 rounded-bl-2xl uppercase tracking-wider shadow-md">Recommended for Change</div>
 
               {/* Gradient Header BG */}
               <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-indigo-50/60 to-transparent -z-10"></div>
 
-              <div className="mb-6 text-center relative">
-                <div className="w-16 h-16 mx-auto rounded-3xl bg-white shadow-md shadow-indigo-100 flex items-center justify-center text-3xl mb-4 text-indigo-600 border border-indigo-50 group-hover:scale-110 transition-transform duration-500">🎓</div>
-                <h3 className="text-2xl font-extrabold text-slate-900 mb-1">21-Day Program</h3>
+              <div className="mb-3 text-center relative">
+                <div className="w-12 h-12 mx-auto rounded-3xl bg-white shadow-md shadow-indigo-100 flex items-center justify-center text-xl mb-2 text-indigo-600 border border-indigo-50 group-hover:scale-110 transition-transform duration-500">🎓</div>
+                <h3 className="text-xl font-extrabold text-slate-900 mb-1">21-Day Program</h3>
                 <p className="text-indigo-600 font-semibold tracking-wide uppercase text-xs">Deep Emotional Reset</p>
               </div>
 
-              <ul className="space-y-3 mb-6 flex-1 px-1">
+              <ul className="space-y-1.5 mb-3 flex-1 px-1">
                 {[
                   { t: "Step-by-step 3 week course", d: "Structured daily guidance." },
                   { t: "Heal the root cause", d: "Understand why you feel this way." },
@@ -765,7 +807,7 @@ export default function Home() {
                   <li key={i} className="flex items-start gap-3">
                     <div className="mt-1 w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center shrink-0 text-indigo-600 text-[11px] font-bold">✓</div>
                     <div>
-                      <span className="block text-slate-800 font-semibold text-sm leading-snug">{item.t}</span>
+                      <span className="block text-slate-800 font-semibold text-[13px] leading-snug">{item.t}</span>
                       <span className="block text-slate-500 text-xs mt-1">{item.d}</span>
                     </div>
                   </li>
@@ -774,7 +816,7 @@ export default function Home() {
 
               <Link
                 href="/program"
-                className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white py-4 rounded-2xl font-bold text-base hover:shadow-lg hover:shadow-slate-300/40 transition-all flex items-center justify-center gap-2 group/btn relative overflow-hidden"
+                className="w-full bg-gradient-to-r from-slate-900 to-slate-800 text-white py-3 rounded-2xl font-bold text-sm hover:shadow-lg hover:shadow-slate-300/40 transition-all flex items-center justify-center gap-2 group/btn relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/10 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
                 <span className="relative">Start Program • $27 one-time</span>
@@ -783,16 +825,16 @@ export default function Home() {
             </div>
 
             {/* Option 2: The App */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-white rounded-2xl p-4 border border-slate-100 shadow-md shadow-slate-200/60 flex flex-col relative overflow-hidden group hover:-translate-y-0.5 transition-all duration-300">
               <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-slate-50/80 to-transparent -z-10"></div>
 
-              <div className="mb-6 text-center relative">
-                <div className="w-16 h-16 mx-auto rounded-3xl bg-white shadow-md shadow-slate-100 flex items-center justify-center text-3xl mb-4 text-slate-600 border border-slate-50 group-hover:scale-110 transition-transform duration-500">📱</div>
-                <h3 className="text-2xl font-extrabold text-slate-900 mb-1">MoodWiser App</h3>
+              <div className="mb-3 text-center relative">
+                <div className="w-12 h-12 mx-auto rounded-3xl bg-white shadow-md shadow-slate-100 flex items-center justify-center text-xl mb-2 text-slate-600 border border-slate-50 group-hover:scale-110 transition-transform duration-500">📱</div>
+                <h3 className="text-xl font-extrabold text-slate-900 mb-1">MoodWiser App</h3>
                 <p className="text-slate-500 font-semibold tracking-wide uppercase text-xs">Daily Maintenance</p>
               </div>
 
-              <ul className="space-y-3 mb-6 flex-1 px-1">
+              <ul className="space-y-1.5 mb-3 flex-1 px-1">
                 {[
                   { t: "Panic Button Relief", d: "Instant calm in < 2 minutes." },
                   { t: "Daily Mood Tracking", d: "See your emotional patterns." },
@@ -805,7 +847,7 @@ export default function Home() {
                   <li key={i} className="flex items-start gap-3">
                     <div className="mt-1 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 text-[11px] font-bold">✓</div>
                     <div>
-                      <span className="block text-slate-800 font-semibold text-sm leading-snug">{item.t}</span>
+                      <span className="block text-slate-800 font-semibold text-[13px] leading-snug">{item.t}</span>
                       <span className="block text-slate-500 text-xs mt-1">{item.d}</span>
                     </div>
                   </li>
@@ -846,11 +888,11 @@ export default function Home() {
       <section className="py-20 px-6 bg-gradient-to-b from-white via-slate-50/20 to-white relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-20 w-72 h-72 bg-slate-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-          <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-15"></div>
         </div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12 fade-in-on-scroll">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-sky-400 via-slate-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-sky-400 via-slate-400 to-emerald-500 bg-clip-text text-transparent">
               Stories of Transformation
             </h2>
           </div>
@@ -915,7 +957,7 @@ export default function Home() {
       </section>
 
       {/* Calm Picks Section */}
-      <section id="products" className="py-20 px-6 bg-gradient-to-b from-white via-purple-50/20 to-white relative overflow-hidden">
+      <section id="products" className="py-20 px-6 bg-gradient-to-b from-white via-emerald-50/20 to-white relative overflow-hidden">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 fade-in-on-scroll">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-sky-400 to-slate-400 bg-clip-text text-transparent">
@@ -943,7 +985,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent"></div>
                 <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/90 text-xs font-semibold text-slate-700 shadow-sm">
-                  Affiliate · Calm Tool
+                  Calm Tool
                 </div>
               </div>
               <div className="p-6 flex flex-col gap-3">
@@ -983,7 +1025,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/65 via-slate-900/10 to-transparent"></div>
                 <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-white/90 text-xs font-semibold text-slate-700 shadow-sm">
-                  Affiliate · Calm Ritual
+                  Calm Ritual
                 </div>
               </div>
               <div className="p-6 flex flex-col gap-3">
@@ -994,7 +1036,7 @@ export default function Home() {
                   One spray, one breath, instant reset. A grounding scent ritual to mark the moment you choose calm.
                 </p>
                 <div className="flex items-center justify-between pt-1">
-                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 bg-purple-50 px-3 py-1 rounded-full">
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
                     <span className="text-sm">💨</span> Scent Reset
                   </span>
                   <span className="text-sm font-semibold text-sky-600 flex items-center gap-1">
@@ -1011,7 +1053,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose MoodWiser Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-slate-50/80 via-sky-50/80 to-purple-50/80 relative overflow-hidden">
+      <section className="py-20 px-6 bg-gradient-to-br from-slate-50/80 via-sky-50/80 to-emerald-50/80 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <Image
             src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=600&fit=crop&q=80&auto=format"
@@ -1023,7 +1065,7 @@ export default function Home() {
         </div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16 fade-in-on-scroll">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-400 via-sky-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-400 via-sky-400 to-emerald-500 bg-clip-text text-transparent">
               Why Choose MoodWiser?
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -1093,7 +1135,7 @@ export default function Home() {
       <section id="contact" className="py-20 px-6 bg-gradient-to-b from-white via-slate-50/10 to-white relative overflow-hidden">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12 fade-in-on-scroll">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-slate-400 to-emerald-500 bg-clip-text text-transparent">
               Get in Touch
             </h2>
             <p className="text-xl md:text-2xl text-gray-600 mb-4">
@@ -1160,7 +1202,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-sky-400 via-slate-400 to-purple-400 text-white font-bold py-6 rounded-xl hover:from-sky-500 hover:via-slate-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-glow-purple text-xl cursor-pointer"
+                className="w-full bg-gradient-to-r from-sky-400 via-slate-400 to-emerald-500 text-white font-bold py-6 rounded-xl hover:from-sky-500 hover:via-slate-500 hover:to-emerald-600 transition-all duration-300 transform hover:scale-105 shadow-2xl text-xl cursor-pointer"
               >
                 Send Message
               </button>
@@ -1179,7 +1221,7 @@ export default function Home() {
 
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-20 fade-in-on-scroll">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-sky-400 to-slate-400 bg-clip-text text-transparent">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-emerald-500 via-sky-400 to-slate-400 bg-clip-text text-transparent">
               About Us
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -1207,12 +1249,12 @@ export default function Home() {
 
             {/* Vision Card */}
             <div className="bg-white rounded-3xl p-12 shadow-2xl fade-in-on-scroll border border-gray-100/50 hover:shadow-glow-purple transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+              <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-emerald-100 to-teal-200 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
               <div className="relative z-10">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-500 to-teal-400 flex items-center justify-center mb-8 shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                   <span className="text-4xl">✨</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-pink-600 group-hover:bg-clip-text transition-all duration-300">Our Vision</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-6 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-500 group-hover:bg-clip-text transition-all duration-300">Our Vision</h3>
                 <p className="text-gray-600 leading-relaxed mb-4 text-lg">
                   We envision a world where emotional wellness is accessible to everyone, where technology serves humanity's deepest needs, and where people feel empowered to understand and manage their mental health.
                 </p>
@@ -1244,7 +1286,7 @@ export default function Home() {
                   </div>
 
                   <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center">
                       <span className="text-xl">💚</span>
                     </div>
                     <div>
@@ -1312,7 +1354,7 @@ export default function Home() {
       <section id="blogs" className="py-20 px-6 bg-gradient-to-b from-white via-sky-50/10 to-white relative overflow-hidden">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12 fade-in-on-scroll">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-sky-400 to-slate-400 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-500 via-sky-400 to-slate-400 bg-clip-text text-transparent">
               Blogs
             </h2>
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
@@ -1372,7 +1414,7 @@ export default function Home() {
       <footer className="py-24 px-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-sky-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-slate-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
         </div>
@@ -1390,7 +1432,7 @@ export default function Home() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-sky-400 via-slate-400 to-purple-400 bg-clip-text text-transparent animate-gradient">
+                <div className="text-3xl font-bold bg-gradient-to-r from-sky-400 via-slate-400 to-emerald-500 bg-clip-text text-transparent animate-gradient">
                   Moodwiser
                 </div>
               </div>

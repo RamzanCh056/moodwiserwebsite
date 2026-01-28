@@ -63,52 +63,51 @@ export default function ProgramContent() {
                                     priority
                                 />
                             </div>
-                            <span className="text-xl font-bold bg-gradient-to-r from-sky-500 via-slate-500 to-purple-500 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity tracking-tight">
+                            <span className="text-xl font-bold bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity tracking-tight">
                                 Moodwiser
                             </span>
                         </Link>
-                        <div className="hidden md:flex items-center space-x-8">
+                        <div className="hidden md:flex items-center space-x-4">
                             <Link
                                 href="/"
-                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                                className="transition-all duration-200 font-medium relative px-4 py-2 rounded-full text-gray-700 hover:text-slate-900 hover:bg-white/80 hover:shadow-sm cursor-pointer"
                             >
                                 Home
                             </Link>
                             <Link
                                 href="/#products"
-                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                                className="transition-all duration-200 font-medium relative px-4 py-2 rounded-full text-gray-700 hover:text-slate-900 hover:bg-white/80 hover:shadow-sm cursor-pointer"
                             >
                                 Calm Pick
                             </Link>
                             <Link
                                 href="/program"
-                                className="transition-all duration-200 font-medium relative text-sky-500 font-semibold cursor-pointer"
+                                className="transition-all duration-200 font-medium relative px-4 py-2 rounded-full bg-white text-slate-900 shadow-sm cursor-pointer"
                             >
                                 Program
-                                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400" />
                             </Link>
                             <Link
                                 href="/#blogs"
-                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                                className="transition-all duration-200 font-medium relative px-4 py-2 rounded-full text-gray-700 hover:text-slate-900 hover:bg-white/80 hover:shadow-sm cursor-pointer"
                             >
                                 Blogs
                             </Link>
                             <Link
                                 href="/#about"
-                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                                className="transition-all duration-200 font-medium relative px-4 py-2 rounded-full text-gray-700 hover:text-slate-900 hover:bg-white/80 hover:shadow-sm cursor-pointer"
                             >
                                 About Us
                             </Link>
                             <Link
                                 href="/#contact"
-                                className="transition-all duration-200 font-medium relative text-gray-700 hover:text-sky-500 cursor-pointer"
+                                className="transition-all duration-200 font-medium relative px-4 py-2 rounded-full text-gray-700 hover:text-slate-900 hover:bg-white/80 hover:shadow-sm cursor-pointer"
                             >
                                 Contact Us
                             </Link>
                             {hasPaidAccess && (
                                 <Link
                                     href="/course"
-                                    className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-105 transition-all cursor-pointer"
+                                    className="bg-gradient-to-r from-emerald-600 to-teal-500 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-emerald-500/40 hover:scale-105 transition-all cursor-pointer"
                                 >
                                     🎓 Access Course
                                 </Link>
@@ -143,10 +142,10 @@ export default function ProgramContent() {
             )}
 
             {/* COMPACT HERO SECTION */}
-            <section className={`${hasPaidAccess ? 'pt-40' : 'pt-32'} pb-16 px-6 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-50 via-white to-white`}>
+            <section className={`${hasPaidAccess ? 'pt-40' : 'pt-32'} pb-16 px-6 relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-50 via-white to-emerald-50/60`}>
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                     <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-sky-200/20 rounded-full blur-[100px] animate-pulse"></div>
-                    <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-purple-200/20 rounded-full blur-[80px] animate-pulse delay-1000"></div>
+                    <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-emerald-100/25 rounded-full blur-[80px] animate-pulse delay-1000"></div>
                 </div>
 
                 <div className="container mx-auto max-w-6xl relative z-10 transition-all duration-1000 animate-in fade-in slide-in-from-bottom-4">
@@ -159,7 +158,7 @@ export default function ProgramContent() {
 
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-slate-900">
                                 Emotions Are <br />
-                                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">Wisdom.</span>
+                                <span className="bg-gradient-to-r from-sky-600 via-teal-600 to-emerald-500 bg-clip-text text-transparent">Wisdom.</span>
                             </h1>
 
                             <p className="text-xl text-slate-600 font-light leading-relaxed max-w-xl">
@@ -184,12 +183,17 @@ export default function ProgramContent() {
                                         href="/course"
                                         className="group relative bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[200px] overflow-hidden cursor-pointer"
                                     >
-                                        <span className="text-2xl">🎓</span>
+                                    <span className="text-2xl">🎓</span>
                                         <span>Access Course</span>
                                         <span className="relative group-hover:translate-x-1 transition-transform">→</span>
                                     </Link>
                                 ) : (
-                                    <PaymentButton price="$27" className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-indigo-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[200px] overflow-hidden" />
+                                    <PaymentButton
+                                        price="$27"
+                                        className="group relative bg-gradient-to-r from-sky-600 to-emerald-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-lg hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[220px] overflow-hidden"
+                                    >
+                                        Calm Start 21 Days
+                                    </PaymentButton>
                                 )}
                                 <button
                                     onClick={() => setShowDownloadModal(true)}
@@ -275,7 +279,7 @@ export default function ProgramContent() {
                 <div className="container mx-auto max-w-6xl">
                     {/* Header for this section */}
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">This isn't just a course. <br /><span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">It's for everyone who feels...</span></h2>
+                        <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">This isn't just a course. <br /><span className="bg-gradient-to-r from-emerald-500 via-sky-500 to-slate-500 bg-clip-text text-transparent">It's for everyone who feels...</span></h2>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -297,8 +301,8 @@ export default function ProgramContent() {
 
                     {/* Philosophy Quote */}
                     <div className="mt-16 bg-slate-900 rounded-[2.5rem] p-10 md:p-16 text-center text-white shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px]"></div>
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-[80px]"></div>
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-400/25 rounded-full blur-[80px]"></div>
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-emerald-600/25 rounded-full blur-[80px]"></div>
 
                         <div className="relative z-10 max-w-3xl mx-auto">
                             <h2 className="text-2xl md:text-4xl font-bold mb-8 leading-tight">"We are taught to control, suppress, or medicate. But emotions are <span className="text-indigo-400">signals</span>, not enemies."</h2>
@@ -309,12 +313,12 @@ export default function ProgramContent() {
                                         href="/course"
                                         className="group relative bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[240px] overflow-hidden cursor-pointer"
                                     >
-                                        <span className="text-2xl">🎓</span>
+                                    <span className="text-2xl">🎓</span>
                                         <span className="text-lg">Access Your Course</span>
                                         <span className="relative group-hover:translate-x-1 transition-transform">→</span>
                                     </Link>
                                 ) : (
-                                    <PaymentButton price="$27" className="group relative bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:shadow-indigo-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[240px] overflow-hidden" />
+                                    <PaymentButton price="$27" className="group relative bg-gradient-to-r from-emerald-600 to-teal-500 text-white px-10 py-5 rounded-full font-bold hover:shadow-2xl hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-3 min-w-[240px] overflow-hidden" />
                                 )}
                             </div>
 
@@ -444,11 +448,11 @@ export default function ProgramContent() {
                                         ))}
                                     </div>
                                     {!hasPaidAccess && (
-                                        <div className="mt-8 p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 rounded-3xl border-2 border-indigo-200 shadow-xl text-center relative overflow-hidden">
-                                            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-200/30 rounded-full blur-3xl"></div>
-                                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-200/30 rounded-full blur-2xl"></div>
+                                        <div className="mt-8 p-8 bg-gradient-to-br from-emerald-50 via-sky-50 to-emerald-50 rounded-3xl border-2 border-emerald-200 shadow-xl text-center relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-200/30 rounded-full blur-3xl"></div>
+                                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-emerald-100/30 rounded-full blur-2xl"></div>
                                             <div className="relative z-10">
-                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                                                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-full flex items-center justify-center shadow-lg">
                                                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                                     </svg>
@@ -476,11 +480,11 @@ export default function ProgramContent() {
 
                         {activeWeek === 2 && (
                             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                <div className="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-14 border border-white/50 shadow-2xl shadow-indigo-100/40 relative overflow-hidden group">
-                                    <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 group-hover:scale-110 transition-transform duration-700"></div>
+                                <div className="bg-white/80 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-14 border border-white/50 shadow-2xl shadow-emerald-100/40 relative overflow-hidden group">
+                                    <div className="absolute -right-20 -top-20 w-64 h-64 bg-emerald-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 group-hover:scale-110 transition-transform duration-700"></div>
 
                                     <div className="mb-10 flex items-center gap-6 relative z-10">
-                                        <div className="w-16 h-16 rounded-3xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-3xl shadow-sm transform group-hover:rotate-12 transition-transform duration-500">⚡</div>
+                                        <div className="w-16 h-16 rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl shadow-sm transform group-hover:rotate-12 transition-transform duration-500">⚡</div>
                                         <div>
                                             <h3 className="text-3xl font-bold text-slate-900 mb-1">Inner Strength</h3>
                                             <p className="text-lg text-slate-500 font-light">Goal: Regain control. Practical tools for resilience.</p>
@@ -510,13 +514,13 @@ export default function ProgramContent() {
                                                 )}
                                                 <span className={`text-xs font-bold px-2.5 py-1 rounded-lg transition-colors duration-300 ${
                                                     hasPaidAccess 
-                                                        ? 'text-indigo-600 bg-indigo-100 group-hover/item:bg-indigo-600 group-hover/item:text-white' 
+                                                        ? 'text-emerald-600 bg-emerald-100 group-hover/item:bg-emerald-600 group-hover/item:text-white' 
                                                         : 'text-slate-400 bg-slate-200'
                                                 }`}>{item.d}</span>
                                                 <div className="flex-1">
                                                     <h4 className={`font-bold text-sm transition-colors ${
                                                         hasPaidAccess 
-                                                            ? 'text-slate-800 group-hover/item:text-indigo-700' 
+                                                            ? 'text-slate-800 group-hover/item:text-emerald-700' 
                                                             : 'text-slate-400'
                                                     }`}>{item.t}</h4>
                                                     <p className={`text-xs mt-1 leading-relaxed ${

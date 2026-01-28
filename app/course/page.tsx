@@ -182,6 +182,58 @@ export default function CoursePage() {
           </div>
         </div>
 
+        {/* Visual overview of the 21-day journey */}
+        <div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-3xl bg-gradient-to-br from-emerald-50 via-sky-50 to-white border border-emerald-100 shadow-md p-5 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-sm">
+              1
+            </div>
+            <div className="text-left">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-600">
+                Week 1
+              </p>
+              <p className="text-sm font-bold text-slate-900">
+                Calm & Safety
+              </p>
+              <p className="text-xs text-slate-500">
+                Foundations of anxiety, nervous system & feeling safe.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-3xl bg-gradient-to-br from-sky-50 via-emerald-50 to-white border border-sky-100 shadow-md p-5 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-sky-500 text-white flex items-center justify-center text-2xl shadow-sm">
+              2
+            </div>
+            <div className="text-left">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">
+                Week 2
+              </p>
+              <p className="text-sm font-bold text-slate-900">
+                Strength & Boundaries
+              </p>
+              <p className="text-xs text-slate-500">
+                Confidence, relationships, and emotional limits.
+              </p>
+            </div>
+          </div>
+          <div className="rounded-3xl bg-gradient-to-br from-emerald-50 via-slate-50 to-white border border-slate-100 shadow-md p-5 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center text-2xl shadow-sm">
+              3
+            </div>
+            <div className="text-left">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-700">
+                Week 3
+              </p>
+              <p className="text-sm font-bold text-slate-900">
+                Identity & Calm Power
+              </p>
+              <p className="text-xs text-slate-500">
+                Long-term habits and your new emotional identity.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Audio Players Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {audioDays.map((audioDay) => (
