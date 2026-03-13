@@ -13,7 +13,7 @@ export default function ProgramContent() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
-        <div className="min-h-screen bg-white font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900 relative">
+        <div className="min-h-screen bg-gradient-to-b from-sky-50/90 via-slate-50/95 to-emerald-50/80 font-sans text-slate-800 selection:bg-indigo-100 selection:text-indigo-900 relative">
             {/* Download Modal */}
             {showDownloadModal && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -49,8 +49,8 @@ export default function ProgramContent() {
                 </div>
             )}
 
-            {/* Navigation - unified with home top bar */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl shadow-xl border-b border-gray-100/50 transition-all duration-500">
+            {/* Navigation - matches home header exactly to prevent blink on navigation */}
+            <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl shadow-lg shadow-sky-900/5 border-b border-slate-100/60 transition-all duration-500 ease-out">
                 <nav className="container mx-auto px-6 py-5">
                     <div className="flex items-center justify-between">
                         <Link href="/" className="flex items-center gap-3 group cursor-pointer">
@@ -64,7 +64,7 @@ export default function ProgramContent() {
                                     priority
                                 />
                             </div>
-                            <span className="text-xl font-bold bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity tracking-tight">
+                            <span className="text-lg font-bold bg-gradient-to-r from-sky-400 via-slate-400 to-emerald-500 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
                                 Moodwiser
                             </span>
                         </Link>

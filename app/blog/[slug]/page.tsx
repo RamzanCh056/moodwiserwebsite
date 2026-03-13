@@ -373,6 +373,72 @@ const blogContent: Record<string, {
       'The more you practice these techniques, the easier it becomes to access calm, even in stressful situations.',
       'This is the science behind MoodWiser\'s approach: giving you practical, evidence-based tools to regulate your nervous system and find peace.'
     ]
+  },
+  'first-psychology-lesson': {
+    title: 'The First Psychology Lesson We Ever Learned (Before We Could Speak)',
+    author: 'Justine Sinclair',
+    date: 'March 13, 2025',
+    category: 'Mental Health',
+    content: [
+      'A newborn baby cannot talk. It cannot explain fear. It cannot explain hunger. It cannot explain loneliness. But it knows something powerful. It knows how to feel.',
+      'When a baby cries, it is not manipulation. It is communication. Emotion is the baby\'s first language. Before logic… before words… before reasoning… Human beings experience the world through emotion first.',
+      'Psychologists have studied this for decades. Attachment research by John Bowlby indicated that emotional safety in early life shapes how the brain responds to stress and relationships later in life. In other words: Emotion teaches the brain how safe the world feels.',
+      '## Why Babies Cry (And Why Adults Still Do)',
+      'A baby cries because its brain sends a signal: "I need help." "I feel unsafe." "I need connection."',
+      'The emotional system activates before the thinking system. This is how the human brain is built. The emotional center of the brain—the amygdala—develops earlier than the logical thinking center. That means humans are wired to feel before they think.',
+      'As we grow older, the feelings don\'t disappear. They just become more complicated. Adults may not cry loudly anymore. But emotions still speak through: anxiety, overthinking, frustration, exhaustion, self-doubt. These feelings are not random. They are signals.',
+      '## Emotion Is Not Weakness—It Is Information',
+      'Modern culture sometimes teaches people to ignore their emotions. "Be strong." "Don\'t be sensitive." "Just push through." But psychology research shows something different.',
+      'People who understand their emotions tend to have stronger relationships, better decision-making ability, stronger leadership skills, creativity, and resilience. This concept is known as emotional intelligence, popularized by Daniel Goleman. Emotion is not the enemy of logic. It is often the guide that tells us what matters.',
+      '## A Small Story That Explains Everything',
+      'Imagine a young child learning to walk. The child falls. At first, the child cries. But something interesting happens. The child looks at the parent\'s face. If the parent smiles calmly and says, "You\'re okay," the child often stands up again. The emotion changes from fear to confidence. The child tries again.',
+      'This moment teaches an important lesson: Confidence grows when the brain feels safe enough to try again. Adults are not very different. When we feel emotionally overwhelmed, our brain also needs signals of safety before it can move forward.',
+      '## Why Many Adults Feel Lost Today',
+      'Modern life is fast. Notifications. Deadlines. Social comparison. News alerts. Constant pressure to succeed. The brain absorbs emotional signals all day long. But few people learn how to process those emotions properly.',
+      'Instead, many people suppress feelings, distract themselves, overthink problems, and push harder and harder. Eventually the mind becomes overloaded. The brain is still trying to communicate something. But the message gets buried under stress.',
+      '## The Hidden Wisdom Inside Emotion',
+      'Emotion is not just a reaction. It is a navigation system. Fear tells us something matters. Sadness tells us something needs attention. Anxiety often signals that the brain is carrying too much pressure without release.',
+      'Instead of ignoring emotions, powerful people learn to listen to them carefully. Emotion becomes wisdom when it is understood.',
+      '## The Missing Skill Most People Never Learn',
+      'In school we learn math, science, and history. But almost no one teaches us how to manage the mind. How to calm stress. How to process emotion. How to reset our thoughts. Yet this skill may be one of the most important abilities in life. A calm mind makes better decisions. A focused mind creates opportunities. A balanced emotional system builds stronger relationships.',
+      '## The Science of Calm',
+      'Psychology and neuroscience research show that even short daily mental reset practices can significantly help the brain. Practices like mindfulness or breathing exercises can lower stress hormones, calm the brain\'s fear center, improve emotional regulation, and reduce overthinking. Just a few minutes each day can begin training the brain to return to calm. This is not about escaping emotions. It is about understanding them without being overwhelmed.',
+      '## Why MoodWiser Exists',
+      'Many people know they need calm. But the hardest part is turning calm into a daily habit. MoodWiser was created to make that practice simple. Just 8 minutes a day. A short guided mental reset designed to help the brain release pressure, reconnect with clarity, and build emotional resilience.',
+      'The journey begins with a 21-day guided program, helping people gradually retrain their mind. Over time, something powerful happens. Thoughts become clearer. Emotions become easier to understand. Confidence begins to grow again.',
+      '## A Final Thought',
+      'Every human began life understanding emotion. A baby does not question whether its feelings matter. It simply expresses them. Somewhere along the way, many adults forget this wisdom. But the ability is still there. Emotion is not weakness. It is the mind\'s way of saying: "Something important is here."'
+    ]
+  },
+  'brain-overthinking': {
+    title: 'The Real Reason Your Brain Won\'t Stop Overthinking (And What Psychology Says About It)',
+    author: 'Justine Sinclair',
+    date: 'March 13, 2025',
+    category: 'Mental Health',
+    content: [
+      'It\'s 2:13 AM. Your body is worn out. Your room is quiet. But your mind is wide awake. A conversation from earlier today suddenly replays. "Did I say something wrong?" "Why did they respond like that?" "What if tomorrow goes badly?" Your brain begins analyzing everything. Again. And again.',
+      'If this scenario sounds familiar, you\'re not alone. Psychology research shows most people experience overthinking regularly. But here\'s the surprising part: Overthinking often happens to intelligent, thoughtful, and emotionally aware people. Your mind isn\'t broken. It\'s just working overtime.',
+      '## Why the Brain Overthinks',
+      'The human brain evolved to protect us. Thousands of years ago, noticing danger meant survival. But today, the brain is responding to a different kind of threat: social rejection, work pressure, financial stress, relationship uncertainty, and constant digital stimulation.',
+      'The brain cannot easily distinguish between physical danger and emotional stress. So it tries to solve problems the only way it knows how: By thinking more.',
+      '## The Psychology Behind Overthinking',
+      'Psychologists call this pattern rumination. Rumination happens when the brain repeatedly analyzes problems without reaching a solution. Instead of solving the situation, the brain gets stuck in a mental loop. Fear → thinking → more fear → more thinking. The more the brain searches for answers, the louder the thoughts become.',
+      '## Why Some Minds Overthink More',
+      'Psychology research shows certain personality traits experience overthinking more often. Deep thinkers who enjoy analyzing ideas and emotions often have strong creativity and problem-solving ability—but their minds rarely slow down. Empathetic personalities who feel others\' emotions strongly replay conversations to understand what others may have felt. Perfectionists who want to do things correctly analyze situations carefully to prevent failure. These personalities are often thoughtful, responsible, and intelligent. But their minds can become overloaded.',
+      '## The Brain Was Never Designed For Modern Life',
+      'Think about how much information your brain processes every day. Notifications. Emails. Social media. News alerts. Work decisions. Family responsibilities. Your brain absorbs thousands of emotional signals daily. But very few people give their mind time to release that pressure. Imagine a computer with too many tabs open. Eventually the system slows down. The same thing happens in the human brain.',
+      '## The Hidden Cost of Overthinking',
+      'When the brain stays in analysis mode too long: sleep becomes harder, stress hormones increase, focus becomes weaker, and emotional exhaustion grows. The brain never receives the signal that it is safe to relax. So it keeps scanning for problems.',
+      '## The Missing Skill Most People Never Learn',
+      'Most people are taught how to train the body. Exercise. Diet. Physical health. But almost nobody teaches us how to train the mind. Your brain is not meant to run endlessly. It also needs structured moments of calm. Even a few minutes of daily calm practice can dramatically change how the mind behaves.',
+      '## The Science of Short Mental Resets',
+      'Research in psychology and neuroscience shows that short daily mindfulness or breathing practices can reduce cortisol, calm the brain\'s fear center, improve emotional regulation, and interrupt rumination loops. Even 5–10 minutes per day can begin retraining the nervous system. Consistency matters more than long sessions.',
+      '## Why MoodWiser Was Created',
+      'Many people know they need calm. But the hardest part is turning calm into a daily habit. MoodWiser was designed to make mental training simple. Just 8 minutes a day. A short daily routine that helps the brain reset, release pressure, and return to focus.',
+      'The program begins with a 21-day guided practice, helping people rebuild the habit of calm thinking. Over time, the mind learns something powerful: It doesn\'t need to stay trapped in overthinking. It can return to clarity.',
+      '## A Final Thought',
+      'Overthinking does not mean your mind is weak. Often it means your brain is trying too hard to protect you. But protection without rest becomes exhaustion. Occasionally the most powerful thing you can do for your mind is simple. Pause. Breathe. And allow your brain a few minutes to remember what calm feels like again.'
+    ]
   }
 };
 

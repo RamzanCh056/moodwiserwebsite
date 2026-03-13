@@ -26,11 +26,17 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Smooth scroll animations */
+/* Calm, relaxing feel - softer transitions */
+:root {
+  --calm-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --calm-duration: 0.4s;
+}
+
+/* Smooth scroll animations - gentler for relaxing vibe */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -146,11 +152,11 @@ body {
   animation: slideUp 0.8s ease-out forwards;
 }
 
-/* Intersection Observer for scroll animations */
+/* Intersection Observer - gentle reveal for calm feel */
 .fade-in-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-in-on-scroll.visible {
@@ -158,11 +164,11 @@ body {
   transform: translateY(0);
 }
 
-/* Smooth hover transitions */
+/* Smooth hover transitions - slightly longer for relaxed feel */
 * {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  transition-duration: 200ms;
 }
 
 /* Enhanced glassmorphism */
@@ -180,13 +186,13 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Enhanced shadows */
+/* Softer glows for calming aesthetic */
 .shadow-glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.15), 0 0 48px rgba(16, 185, 129, 0.1);
 }
 
 .shadow-glow-purple {
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3), 0 0 40px rgba(236, 72, 153, 0.2);
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.15), 0 0 48px rgba(236, 72, 153, 0.1);
 }
 
 /* Text gradient animations */
@@ -204,22 +210,22 @@ body {
   animation: gradient-shift 3s ease infinite;
 }
 
-/* Custom scrollbar */
+/* Calm scrollbar - muted, soft gradient */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #7dd3fc, #34d399, #a78bfa);
-  border-radius: 5px;
+  background: linear-gradient(to bottom, #bae6fd, #99f6e4, #c4b5fd);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #38bdf8, #10b981, #8b5cf6);
+  background: linear-gradient(to bottom, #7dd3fc, #5eead4, #a78bfa);
 }
 
 /* Snow Animation */
